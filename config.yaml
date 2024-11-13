@@ -1,0 +1,9 @@
+# MongoDB Configuration
+mongodb:
+  host: "localhost"      # MongoDB server hostname (can be IP or "localhost" for local machine)
+  port: 27017           # Default MongoDB port
+  database: "evollistable"  # The name of your MongoDB database
+#  collection: "bbbbbbbbbbbbbbbbbbb"  # The name of the collection you want to query
+  username: ""  # (Optional) Username if authentication is enabled
+  password: ""  # (Optional) Password if authentication is enabled
+  auth_db: ""         # (Optional) The authentication database, usually "admin"
