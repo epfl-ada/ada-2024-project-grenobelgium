@@ -1,0 +1,8 @@
+# MongoDB Configuration
+mongodb:
+  host: "localhost"      # MongoDB server hostname (can be IP or "localhost" for local machine)
+  port: 27017           # Default MongoDB port
+  database: "evollistable"  # The name of your MongoDB database
+  username: ""  
+  password: "" 
+  auth_db: "" 
