@@ -3,20 +3,23 @@ layout: default
 title: "Unveiling the Secrets Behind YouTube Categories"
 ---
 
-<section id="hero" style="background-image: url('assets/img/background.png'); background-size: cover; background-position: center; padding: 150px 0; text-align: center; color: white; width: 100vw; margin-left: calc(50% - 50vw); margin-top: -100px;">
+<section id="hero" style="background-image: url('assets/img/background.png'); background-size: cover; background-position: center; padding: 150px 0; text-align: center; color: white; width: 100vw; margin-left: calc(50% - 50vw);">
   <h1 style="font-size: 3em; font-weight: bold; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);">Unveiling the Secrets Behind YouTube Categories</h1>
   <p style="font-size: 1.5em; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);">How does content diversity on YouTube influence audience engagement and channel growth?</p>
 </section>
 
 <section id="introduction">
   <h2>Introduction</h2>
-  <p style="color: red;">TODO</p>
-  <p>With millions of videos and hundreds of thousands of channels, YouTube is a content universe. We explored whether channels benefit from focusing on a single category or covering many topics. Using the large-scale YouNiverse dataset, we reveal how content variety correlates with subscriber counts, engagement, and long-term growth.</p>
-</section>
+  <p>Every YouTuber starting out has to make a big decision: should they stick to what they're good at or try out different kinds of content? With over 2.7 billion users on YouTube and 500 hours of video uploaded every minute, the competition is very strong. Deciding whether to focus on a niche or to mix it up can really shape how your channel grows, how well you connect with your audience, and how successful you'll be in the long run.</p>
 
+  <p>The goal of this project is to investigate this trade-off between specialization and diversification. By analyzing the YouNiverse dataset, which is made up of over 136,000 channels and 72 million videos, we aim to uncover patterns and insights that can guide content creators in making informed decisions about their content strategy.</p>
+
+  <p>Restricting ourselves to established channels with at least 10,000 subscribers, we examine how different approaches to diversification correlated with metrics of success, from subscriber growth to audience engagement.</p>
+</section>
 
 <section id="research-questions">
   <h2>Research Questions</h2>
+  <p>To systematically explore the relationship between content diversity and channel success, we investigate six central questions:</p>
   <ol>
     <li>Do YouTube channels with diverse content attract larger audiences and higher growth rates than those focused on a single topic?</li>
     <li>How does content diversity affect viewer engagement and loyalty?</li>
@@ -30,16 +33,12 @@ title: "Unveiling the Secrets Behind YouTube Categories"
 
 <section id="data-overview">
   <h2>The Data</h2>
-  <p>The YouNiverse dataset contains over 136,000 English-language YouTube channels and more than 72 million videos. We focused on channels with more than 10k subscribers and at least 10 videos. This allowed us to capture established creators and avoid noise from very small channels. At the same time, however, it is important to acknowledge the possibility that we introduced a bias by excluding smaller channels, which may have different characteristics and/or growth trajectories.</br>
+  <p>The YouNiverse dataset contains over 136,000 English-language YouTube channels and more than 72 million videos. We focuse on channels with more than 10,000 subscribers and at least 10 videos. This allows us to capture established creators and avoid noise from very small channels. At the same time, however, it is important to acknowledge the possibility that we thereby introduce a bias by excluding smaller channels whose growth trajectories might differ.</br>
   With this in mind, let us have a look at the distribution of channels and subscribers across categories.</p>
   <p style="color: red;">TODO: change into pie charts. Plotly for some interactivity?</p>
   <img src="assets/img/channel-category-distr.png" alt="Plot 2">
   <img src="assets/img/subscribers-across-categories.png" alt="Plot 3">
-  <!-- <p>As we can see, the dataset is dominated by channels in the Entertainment, Music, Gaming, and People & Blogs categories which reflects their potential to appeal to broad audiences. The YouTube landscape also contains a significant number of channels dealing with topics like Howto & Style, Education, and Sports, whereas categories such as Nonprofits & Activism and Pets & Animals are more niche, resulting in fewer channels.</p> -->
-  </p>As we can see, the distribution of YouTube channels across categories is heavily dominated by Music, Entertainment, and Gaming, which together make up a large portion of all channels. Categories like People & Blogs and Howto & Style are also quite prominent, showing that a diverse range of creators are actively contributing to these spaces. On the other hand, more niche categories, such as Nonprofits & Activism and Pets & Animals, have far fewer channels, reflecting their more specialized appeal.
+  </p>As we can see, the distribution of YouTube channels across categories is heavily dominated by Music, Entertainment, Gaming, and People & Blogs which together make up approximately 63% of all channels. These four big players are followed by a range of other categories having a large number of creators actively contributing to them. On the other end of the spectrum, more niche categories, such as Nonprofits & Activism and Pets & Animals, have far fewer channels, telling us that their appeal is much more specialized.
 
-When we look at the distribution of subscribers across these categories, a similar trend appears, but with a few key differences. While Entertainment and Music still lead the way, Entertainment pulls ahead in subscriber share, suggesting that channels in this category tend to attract larger audiences. Categories like Education and Sports have a significant number of channels but a smaller share of subscribers, which may indicate more competition or fragmented viewership. Interestingly, categories like Comedy and Film & Animation stand out by achieving a solid share of subscribers despite having fewer channels overall, suggesting that these categories may have a higher concentration of popular channels.
-
-In short, the distribution of channels and subscribers highlights the dominance of popular categories, but the differences between the two reveal interesting insights about audience preferences and the level of competition across YouTube’s landscape.</p>
-  <img src="assets/img/avg-number-videoes-per-category.png" alt="Plot 1">
+When we look at the distribution of subscription volume across these categories, a similar trend appears, but with a few key differences. While the same four dominant categories together account for roughly 66% of subscriptions, Entertainment takes over in subscriber share. Categories like Education and Sports have a significant number of channels but a smaller share of subscribers, which could indicate more competition, i.e., a fragmented viewership.</p>
 </section>
