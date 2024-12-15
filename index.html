@@ -3,20 +3,17 @@ layout: default
 title: "Unveiling the Secrets Behind YouTube Categories"
 ---
 
-<section id="hero">
-  <h1>Unveiling the Secrets Behind YouTube Categories</h1>
-  <p>How does content diversity on YouTube influence audience engagement and channel growth?</p>
+<section id="hero" style="background-image: url('assets/img/background.png'); background-size: cover; background-position: center; padding: 150px 0; text-align: center; color: white; width: 100vw; margin-left: calc(50% - 50vw); margin-top: -100px;">
+  <h1 style="font-size: 3em; font-weight: bold; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);">Unveiling the Secrets Behind YouTube Categories</h1>
+  <p style="font-size: 1.5em; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);">How does content diversity on YouTube influence audience engagement and channel growth?</p>
 </section>
 
 <section id="introduction">
   <h2>Introduction</h2>
+  <p style="color: red;">TODO</p>
   <p>With millions of videos and hundreds of thousands of channels, YouTube is a content universe. We explored whether channels benefit from focusing on a single category or covering many topics. Using the large-scale YouNiverse dataset, we reveal how content variety correlates with subscriber counts, engagement, and long-term growth.</p>
 </section>
 
-<section id="data-overview">
-  <h2>The Data</h2>
-  <p>The YouNiverse dataset contains over 136,000 English-language YouTube channels and more than 72 million videos. We focused on channels with more than 10k subscribers and at least 10 videos. This allowed us to capture established creators and avoid noise from very small channels.</p>
-</section>
 
 <section id="research-questions">
   <h2>Research Questions</h2>
@@ -30,47 +27,19 @@ title: "Unveiling the Secrets Behind YouTube Categories"
   </ol>
 </section>
 
-<section id="global-analysis">
-  <h2>I. Global Analysis of Categories</h2>
-  <p>We began by examining the distribution of channel categories. Four categories—Music, Entertainment, Gaming, and People & Blogs—dominate both the number of channels and total subscribers.</p>
-  <img src="assets/images/category_distribution.png" alt="Category Distribution" />
-  <p>These dominant categories account for over 60% of channels and subscribers, shaping much of YouTube’s content landscape.</p>
-</section>
 
-<section id="co-occurrence">
-  <h2>II. Content Ecosystems: Co-occurrence of Categories</h2>
-  <p>Channels rarely produce content exclusively in one category. We mapped out category co-occurrences to uncover content 'ecosystems'.</p>
-  <img src="assets/images/cooccurrence_heatmap.png" alt="Co-occurrence Heatmap" />
-  <p>Entertainment and People & Blogs act as hubs, connecting various categories. A network of frequently co-occurring categories—Gaming, Music, Comedy, Film & Animation—emerges, suggesting these genres often blend together.</p>
-  <img src="assets/images/cooccurrence_network.png" alt="Co-occurrence Network Graph" />
-</section>
+<section id="data-overview">
+  <h2>The Data</h2>
+  <p>The YouNiverse dataset contains over 136,000 English-language YouTube channels and more than 72 million videos. We focused on channels with more than 10k subscribers and at least 10 videos. This allowed us to capture established creators and avoid noise from very small channels. At the same time, however, it is important to acknowledge the possibility that we introduced a bias by excluding smaller channels, which may have different characteristics and/or growth trajectories.</br>
+  With this in mind, let us have a look at the distribution of channels and subscribers across categories.</p>
+  <p style="color: red;">TODO: change into pie charts. Plotly for some interactivity?</p>
+  <img src="assets/img/channel-category-distr.png" alt="Plot 2">
+  <img src="assets/img/subscribers-across-categories.png" alt="Plot 3">
+  <!-- <p>As we can see, the dataset is dominated by channels in the Entertainment, Music, Gaming, and People & Blogs categories which reflects their potential to appeal to broad audiences. The YouTube landscape also contains a significant number of channels dealing with topics like Howto & Style, Education, and Sports, whereas categories such as Nonprofits & Activism and Pets & Animals are more niche, resulting in fewer channels.</p> -->
+  </p>As we can see, the distribution of YouTube channels across categories is heavily dominated by Music, Entertainment, and Gaming, which together make up a large portion of all channels. Categories like People & Blogs and Howto & Style are also quite prominent, showing that a diverse range of creators are actively contributing to these spaces. On the other hand, more niche categories, such as Nonprofits & Activism and Pets & Animals, have far fewer channels, reflecting their more specialized appeal.
 
-<section id="diversity-metric">
-  <h2>III. A Channel Diversity Metric</h2>
-  <p>To quantify how varied a channel’s content is, we developed a metric that accounts for both the spread of categories and how related they are. Channels that cover many unrelated categories score higher on diversity than those focused on a single theme or closely related topics.</p>
-  <img src="assets/images/diversity_distribution.png" alt="Diversity Score Distribution" />
-  <p>We found that most channels lean towards lower diversity. A Beta distribution fits the diversity scores well, indicating that extreme variety is rare.</p>
-</section>
+When we look at the distribution of subscribers across these categories, a similar trend appears, but with a few key differences. While Entertainment and Music still lead the way, Entertainment pulls ahead in subscriber share, suggesting that channels in this category tend to attract larger audiences. Categories like Education and Sports have a significant number of channels but a smaller share of subscribers, which may indicate more competition or fragmented viewership. Interestingly, categories like Comedy and Film & Animation stand out by achieving a solid share of subscribers despite having fewer channels overall, suggesting that these categories may have a higher concentration of popular channels.
 
-<section id="optimal-diversity">
-  <h2>IV. Finding the Optimal Diversity Range</h2>
-  <p>Does more diversity always mean better performance? We split channels into low, moderate, and high diversity groups and examined their subscriber counts.</p>
-  <img src="assets/images/subscriber_comparison.png" alt="Subscribers by Diversity Level" />
-  <p>Surprisingly, channels in the moderate diversity range attracted more subscribers, suggesting a sweet spot where creators benefit from some variety without confusing their audience.</p>
-</section>
-
-<section id="time-series">
-  <h2>V. Evolution of Channels Over Time</h2>
-  <p>We compared how channels in entertainment-oriented categories (Gaming, Music, Film & Animation) differ from those in educational categories (Education, How-to, Science & Tech) over their first year.</p>
-  <img src="assets/images/short_term_growth_views.png" alt="Short-term Views Growth Comparison" />
-  <p>Entertainment channels experience sharp spikes in views tied to viral moments, followed by declines. Educational channels grow more steadily, showing the lasting value of evergreen content.</p>
-
-  <img src="assets/images/short_term_growth_subscribers.png" alt="Short-term Subscriber Growth Comparison" />
-  <p>Subscriber trends mirror views: Entertainment sees intense but short-lived surges, while educational channels accumulate subscribers gradually and more consistently over time.</p>
-</section>
-
-<section id="conclusion">
-  <h2>Conclusion</h2>
-  <p>This analysis highlights that while YouTube’s most popular categories dominate overall numbers, sustainable growth and engagement often come from balanced content strategies. Moderately diverse channels fare better in attracting loyal subscribers, and content with lasting relevance—like educational videos—builds stable growth patterns over time.</p>
-  <p>These insights can guide creators in optimizing their content strategies: balancing variety with a recognizable identity may be the key to both attracting and retaining an engaged audience.</p>
+In short, the distribution of channels and subscribers highlights the dominance of popular categories, but the differences between the two reveal interesting insights about audience preferences and the level of competition across YouTube’s landscape.</p>
+  <img src="assets/img/avg-number-videoes-per-category.png" alt="Plot 1">
 </section>
