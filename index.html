@@ -245,7 +245,7 @@ $$</p></li>
 
 <p><strong>i. Example</strong></p>
 
-<p>We begin by dividing the diversity domain into three categories using $q<em>1=0.1$ and $q</em>2=0.6$, ensuring a balanced distribution across categories. Next, we will examine whether these diversity categories have an impact on subscriber count.</p>
+<p>We begin by dividing the diversity domain into three categories using q1=0.1 and q2=0.6, ensuring a balanced distribution across categories. Next, we will examine whether these diversity categories have an impact on subscriber count.</p>
         <img src="assets/img/comparison_of_suscribers.png" alt=""Plot13">
 <p>From the initial plot, it appears that there is a significant difference in the number of subscribers across the three diversity categories. However, as emphasized earlier, <strong>visual inspection alone is not sufficient to draw reliable conclusions</strong>. To rigorously support our claim, we will apply non-parametric statistical tests to assess whether the observed differences are statistically significant.</p>
 
@@ -255,16 +255,16 @@ $$</p></li>
 
 <p><strong>ii. Identifying the Optimal Diversity Region</strong></p>
 
-<p>Now that we have established statistical significance regarding the differences in subscription distributions across the three diversity categories, we aim to identify the optimal diversity region for channel success. To do this, we will perform a grid search across different quantile values for $q<em>1$ and $q</em>2$, which define the boundaries of the diversity categories.</p>
+<p>Now that we have established statistical significance regarding the differences in subscription distributions across the three diversity categories, we aim to identify the optimal diversity region for channel success. To do this, we will perform a grid search across different quantile values for q1 and q2, which define the boundaries of the diversity categories.</p>
 
 <p>The grid search will be constrained by the requirement to maintain fairly balanced categories. Specifically:</p>
 
 <ul>
-<li>When $q<em>1 = 0$ or $q</em>2 = 1$, we will limit the search to two categories, ensuring they are balanced (dividing the diversity domain into a low and high diversity category).</li>
-<li>Otherwise, for intermediate values of $q<em>1$ and $q</em>2$, we will examine three balanced categories, each representing a distinct diversity level (low, moderate, and high).</li>
+<li>When q1 = 0 or q2 = 1, we will limit the search to two categories, ensuring they are balanced (dividing the diversity domain into a low and high diversity category).</li>
+<li>Otherwise, for intermediate values of q1 and q2, we will examine three balanced categories, each representing a distinct diversity level (low, moderate, and high).</li>
 </ul>
         <img src="assets/img/grid search.png" alt=""Plot14">
-<p>From our analysis, it appears that the optimal domain for maximizing subscription counts lies within the moderate diversity category, defined by the quantile values $𝑞<em>1=0.05$ and $𝑞</em>2=0.6$. This domain seems to strike a balance between channels that focus too narrowly on a small set of categories (low diversity) and those that attempt to cover too many topics (high diversity).</p>
+<p>From our analysis, it appears that the optimal domain for maximizing subscription counts lies within the moderate diversity category, defined by the quantile values 𝑞1=0.05 and 𝑞2=0.6. This domain seems to strike a balance between channels that focus too narrowly on a small set of categories (low diversity) and those that attempt to cover too many topics (high diversity).</p>
 
 <p>Channels within this moderate diversity range likely benefit from a combination of the following factors:</p>
 
