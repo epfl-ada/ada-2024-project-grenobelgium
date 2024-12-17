@@ -129,54 +129,153 @@ However, we lack sufficient data between 2015 and the end of 2016, which prevent
      </p> This plot reinforces the clusters identified in the previous visualization. However, it also highlights a limitation of Louvain's algorithm: it fails to recognize isolated categories as distinct clusters. Instead, these categories are often grouped with others, despite not sharing significant co-occurrence relationships. This issue arises because Louvain's method focuses on maximizing modularity, which can sometimes lead to less accurate representations of small or isolated communities that lack strong connections. To address this, additional refinement techniques or alternative community detection algorithms might be necessary to better capture these isolated categories.    </p>
   </section>
 <section id="Design of a Channel Diversity Metric: A Quantitative Approach to Content Diversity">
-   <!-- Title -->
-    <h1>III. Design of a Channel Diversity Metric: A Quantitative Approach to Content Diversity</h1>
 
-    <!-- Introduction -->
-    <p>To evaluate how diverse the content of a YouTube channel is, we propose a quantitative metric that considers the spread of videos across different categories and themes. This section describes the methodology and rationale for developing this metric.</p>
-
-    <!-- Conceptual Framework -->
-    <h2>1. Conceptual Framework</h2>
-    <p>Content diversity can be defined as the variation in topics, video types, and audience engagement patterns within a channel. A diverse content strategy may attract a broader audience but can also fragment the existing viewer base.</p>
-
-    <!-- Image Placeholder -->
-    <img src="photo1" alt="Conceptual Framework Diagram" style="width:100%; height:auto;">
-
-    <!-- Metric Design -->
-    <h2>2. Metric Design</h2>
-    <p>We calculate the content diversity score using two primary approaches:</p>
-    <ul>
-        <li><strong>Category Entropy:</strong> Measures the dispersion of videos across predefined categories.</li>
-        <li><strong>Video Theme Clustering:</strong> Identifies the variety of themes using unsupervised learning techniques.</li>
-    </ul>
-
-    <!-- Image Placeholder -->
-    <img src="photo2" alt="Category Entropy Calculation" style="width:100%; height:auto;">
-
-    <h3>2.1. Category Entropy</h3>
-    <p>Entropy quantifies the unpredictability in the distribution of videos. For a given channel, it is calculated as:</p>
-    <blockquote>
-        <p><em>Entropy = -&#8721; (p<sub>i</sub> * log<sub>2</sub>(p<sub>i</sub>))</em></p>
-    </blockquote>
-    <p>Where <em>p<sub>i</sub></em> is the proportion of videos in category <em>i</em>.</p>
-
-    <!-- Image Placeholder -->
-    <img src="photo3" alt="Entropy Formula Application" style="width:100%; height:auto;">
-
-    <h3>2.2. Video Theme Clustering</h3>
-    <p>We use clustering techniques (e.g., K-means, DBSCAN) to group videos based on text-based metadata such as titles, tags, and descriptions. This allows us to identify recurring themes and measure their diversity.</p>
-
-    <!-- Image Placeholder -->
-    <img src="photo4" alt="Clustering Visualization" style="width:100%; height:auto;">
-
-    <!-- Interpretation of Results -->
-    <h2>3. Interpretation of Results</h2>
-    <p>A higher diversity score indicates a wider range of content, while a lower score reflects a more focused content strategy. The trade-offs between content diversity and audience loyalty will be analyzed in the subsequent sections.</p>
-
-    <!-- Conclusion -->
-    <h2>4. Summary</h2>
-    <p>The proposed channel diversity metric combines entropy analysis and clustering techniques to provide a comprehensive evaluation of content variation. This approach offers insights into the impact of content strategy on channel performance.</p>
-
-    <!-- Image Placeholder -->
-    <img src="photo5" alt="Summary Visualization" style="width:100%; height:auto;">
     </section>
+
+<h1>III. Design of a Channel Diversity Metric: A Quantitative Approach to Content Diversity</h1>
+
+<p>We want to evaluate the diversity of a channel based not only on the distribution of categories it publishes but also on the relatedness of those categories. Specifically, a channel that publishes content in categories that rarely co-occur (categories that are less related) should be considered more diverse than one that publishes content in closely related categories.</p>
+
+<h3>i. Entropy: Measuring Category Distribution</h3>
+
+<p>The entropy term captures the <strong>spread</strong> of content across different categories in a channel. If a channel focuses on a narrow set of categories, entropy will be low, while a more balanced distribution of content across categories will yield higher entropy. Formally, entropy is calculated as:</p>
+
+<p>$$
+H = - \sum<em>{i=1}^{n} p</em>i \log(p_i)
+$$</p>
+
+<p>where $(p_i)$ is the proportion of content in category $(i)$ (estimated directly from the channel's category distribution), and $(n)$ is the total number of unique categories within the channel. A higher value of entropy indicates that the channel is more diverse in terms of the variety of topics it covers.</p>
+
+<h3>ii. Normalized Mutual Information (NMI): Adjusting for Category Relationships</h3>
+
+<p>While entropy accounts for the spread of content, it does not capture how the categories are related. Channels that use categories with <strong>high co-occurrence</strong> may appear diverse at first glance, but in reality, they may be focusing on overlapping topics. To account for this, we incorporate <strong>Normalized Mutual Information (NMI)</strong>.</p>
+
+<p>The NMI between two categories $(i)$ and $(j)$ is given by:</p>
+
+<p>$$
+\text{NMI}(i,j) = \frac{I(i,j)}{\max(H(i), H(j))}
+$$</p>
+
+<p>where $(I(i,j))$ is the <strong>mutual information</strong> between categories $(i)$ and $(j)$, and $(H(i))$, $(H(j))$ are the individual entropies of the categories. </p>
+
+<p>The mutual information is computed using the global co-occurrence matrix of categories across all channels:</p>
+
+<p>$$
+I(i,j) = p<em>{ij} \log \left( \frac{p</em>{ij}}{p<em>i^{\text{global}} p</em>j^{\text{global}}} \right)
+$$</p>
+
+<p>where:
+- $(p<em>{ij})$ is the probability of categories $(i)$ and $(j)$ co-occurring across all channels.
+- $(p</em>i^{\text{global}})$ and $(p_j^{\text{global}})$ are the global marginal probabilities of categories $(i)$ and $(j)$, respectively.</p>
+
+<p>If two categories often co-occur, their NMI will be high, suggesting they are not independent, and thus the diversity score is penalized for such overlap.</p>
+
+<h3>iii. The Full Diversity Metric</h3>
+
+<p>The final <strong>Channel Diversity Metric</strong> is computed as:</p>
+
+<p>$$
+\text{Channel Diversity} = \frac{- \sum<em>{i\neq j} p</em>i \log(p_i) \cdot (1 - \text{NMI}(i,j))}{\log(n)}
+$$</p>
+
+<p>This formula combines the entropy term, which encourages a broad distribution of categories, with the NMI adjustment, which penalizes the use of highly related categories. The division by $(log(n))$ normalizes the score, ensuring comparability across channels with different numbers of categories.</p>
+
+<h1>1. Testing the Coherence of the Channel Diversity Metric</h1>
+
+<p>Before applying the Channel Diversity Metric on real-world data, we first want to verify its coherence by testing it on a few example channels. These examples are chosen to represent different types of content diversity, and we expect the metric to rank them accordingly based on the diversity of their categories.</p>
+
+<p>The example channels are :
+<strong>Gaming-focused</strong>, <strong>Diverse-related</strong>, <strong>Diverse-independent</strong> and <strong>Comedy-only</strong></p>
+
+<p>The expected ranking of the channels in terms of diversity is:</p>
+
+<ol>
+<li><strong>Diverse-independent</strong>: Highest diversity (varied, unrelated categories).</li>
+<li><strong>Diverse-related</strong>: Moderate diversity (some overlap between categories).</li>
+<li><strong>Gaming-focused</strong>: Lower diversity (dominant "Gaming" category with some overlap).</li>
+<li><strong>Comedy-only</strong>: Lowest diversity (single category).</li>
+</ol>
+
+<p><strong>The results seem to be coherent with our expectations. Nice!</strong></p>
+
+<h1>2. Application on real channel data</h1>
+
+<p>From the histogram of channel frequencies and their corresponding diversity scores, we observe that several potential generative laws could explain the observed distribution. The distribution could follow one of the following forms:</p>
+
+<ol>
+<li><p><strong>Exponential Distribution</strong>: The probability density function (PDF) is given by:</p>
+
+<p>$$
+f(x|\lambda) = \lambda e^{-\lambda x}, \quad x \geq 0
+$$</p></li>
+<li><p><strong>Truncated Normal Distribution</strong>: A normal distribution restricted to a specific range, typically used when data is confined within certain bounds. The truncated normal PDF is:</p>
+
+<p>$$
+f(x|\mu, \sigma, a, b) = \frac{\phi\left(\frac{x - \mu}{\sigma}\right)}{\sigma[\Phi\left(\frac{b - \mu}{\sigma}\right) - \Phi\left(\frac{a - \mu}{\sigma}\right)]}, \quad a \leq x \leq b
+$$</p>
+
+<p>where $\phi$ is the standard normal PDF and $\Phi$ is the cumulative distribution function (CDF).</p></li>
+<li><p><strong>Gamma Distribution</strong>:</p>
+
+<p>$$
+f(x|\alpha, \beta) = \frac{x^{\alpha-1} e^{-x/\beta}}{\beta^\alpha \Gamma(\alpha)}, \quad x \geq 0
+$$</p></li>
+<li><p><strong>Beta Distribution</strong>:</p>
+
+<p>$$
+f(x|\alpha, \beta) = \frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha, \beta)}, \quad 0 \leq x \leq 1
+$$</p></li>
+</ol>
+
+<p>To determine which of these distributions is most plausible for our diversity score data, we proceed by analyzing their goodness of fit. The first step in this process is to visualize the data against the theoretical distribution using a <strong>Quantile-Quantile (QQ) plot</strong>: A QQ plot compares the quantiles of the empirical data against the quantiles of a given theoretical distribution. If the data follows the proposed distribution, the points in the QQ plot will lie approximately on a straight line.</p>
+
+<p>Upon examining the Q-Q plots for each candidate distribution, it becomes evident that the gamma and beta distributions are the most plausible candidates for the true generative model. This observation highlights the limitations of relying solely on visual inspection to determine a sample's underlying distribution. While initial examination of distribution plots suggested that the exponential and truncated normal distributions were strong contenders, the Q-Q plots reveal significant deviations, indicating that these distributions are less likely to fit the data accurately.</p>
+
+<p>To further solidify our conclusions, we will now compute both the log-likelihood and the mean squared error (MSE) of the Q-Q plots. These quantitative measures will help us determine, with greater confidence, which distribution best fits the observed data.</p>
+
+<p>The fact that YouTube channel diversity scores follow a Beta distribution implies that most channels tend to focus on a narrow set of categories, resulting in low diversity scores. This indicates that many creators prefer specialized content strategies, sticking to a limited range of topics. The flexibility of the Beta distribution also suggests that while some channels embrace broader content diversity, the majority operate within a more restrictive set of categories, reflecting strategic choices for niche targeting or audience consistency.</p>
+
+<p>By identifying the true generative law, we can make afterwards more accurate predictions about a channel's future diversity scores. This understanding enables us to model the relationship between content strategy and diversity, allowing for better forecasting of how changes in content focus might impact a channel's diversity over time. It also provides a foundation for identifying trends and anomalies in content categorization across different channels.</p>
+
+<h2>3. Inspecting optimal diversity domains</h2>
+
+<p>In order to explore the relationship between channel diversity and success, we aim to divide the diversity domain into three distinct categories: <strong>low, moderate, and high diversity</strong>. This approach will help us identify whether certain levels of content diversity are correlated with greater <strong>channel success</strong>. To ensure that our findings are <strong>not overly reliant on specific data subsets</strong> and can be generalized across different types of channels, we will use the theoretical quantiles of the Beta distribution to define these categories. By leveraging these quantiles, we can create <strong>well-balanced groups</strong> based on the natural spread of the diversity scores, ensuring statistical rigor and minimizing any bias that might arise from arbitrary cutoffs.</p>
+
+<p>Furthermore, by constructing balanced domains, we can ensure that each category has an adequate representation of channels, which will allow us to draw meaningful, statistically significant conclusions about how diversity levels affect channel success. This method helps avoid overfitting to specific trends in the data, leading to more robust, generalizable insights.</p>
+
+<p><strong>i. Example</strong></p>
+
+<p>We begin by dividing the diversity domain into three categories using $q<em>1=0.1$ and $q</em>2=0.6$, ensuring a balanced distribution across categories. Next, we will examine whether these diversity categories have an impact on subscriber count.</p>
+
+<p>From the initial plot, it appears that there is a significant difference in the number of subscribers across the three diversity categories. However, as emphasized earlier, <strong>visual inspection alone is not sufficient to draw reliable conclusions</strong>. To rigorously support our claim, we will apply non-parametric statistical tests to assess whether the observed differences are statistically significant.</p>
+
+<p>To test for differences between the three diversity categories, we will use the <strong>Kruskal-Wallis test</strong>. This test is appropriate because it does not assume a normal distribution of the data and can compare more than two groups. The null hypothesis for this test is that all groups have the same distribution, while the alternative hypothesis is that at least one group differs significantly from the others.</p>
+
+<p>We will proceed with pairwise comparisons using the <strong>Mann-Whitney U test</strong>. This test will allow us to compare each pair of diversity categories to identify which specific groups differ from each other. The Mann-Whitney U test is a non-parametric test that compares the ranks of two independent groups, with the null hypothesis being that the two groups come from the same distribution.</p>
+
+<p><strong>ii. Identifying the Optimal Diversity Region</strong></p>
+
+<p>Now that we have established statistical significance regarding the differences in subscription distributions across the three diversity categories, we aim to identify the optimal diversity region for channel success. To do this, we will perform a grid search across different quantile values for $q<em>1$ and $q</em>2$, which define the boundaries of the diversity categories.</p>
+
+<p>The grid search will be constrained by the requirement to maintain fairly balanced categories. Specifically:</p>
+
+<ul>
+<li>When $q<em>1 = 0$ or $q</em>2 = 1$, we will limit the search to two categories, ensuring they are balanced (dividing the diversity domain into a low and high diversity category).</li>
+<li>Otherwise, for intermediate values of $q<em>1$ and $q</em>2$, we will examine three balanced categories, each representing a distinct diversity level (low, moderate, and high).</li>
+</ul>
+
+<p>From our analysis, it appears that the optimal domain for maximizing subscription counts lies within the moderate diversity category, defined by the quantile values $𝑞<em>1=0.05$ and $𝑞</em>2=0.6$. This domain seems to strike a balance between channels that focus too narrowly on a small set of categories (low diversity) and those that attempt to cover too many topics (high diversity).</p>
+
+<p>Channels within this moderate diversity range likely benefit from a combination of the following factors:</p>
+
+<ul>
+<li><p>Targeted Content Strategy: Channels that operate within this domain may be focusing on a <strong>broad but still manageable range of topics</strong>. They are not too specialized to limit their audience, nor are they too generalized to lose focus. This balance may help attract a more consistent and engaged subscriber base.</p></li>
+<li><p>Audience Engagement: Channels that span a moderate number of categories can cater to a variety of viewer interests, leading to increased engagement. At the same time, they avoid spreading themselves too thin across unrelated topics, which could dilute the channel's identity and cause audience fragmentation.</p></li>
+<li><p>Content Differentiation: By staying within the moderate diversity range, these channels are likely to stand out in niche areas without competing with the most generalized or overly specific content. This positioning could lead to higher discoverability and a greater likelihood of attracting subscribers who are interested in a curated but diverse set of topics.</p></li>
+<li><p>Statistical Support: The significant differences in subscription counts observed within this moderate diversity range, as confirmed by statistical tests, suggest that the choice of content breadth within this domain positively influences channel growth. This is likely due to the fact that it aligns with a larger, more engaged audience while still maintaining a distinct channel identity.</p></li>
+</ul>
+
+<p><strong>Remark</strong></p>
+
+<p>We plan to extend this analysis to other key metrics, including viewership, likes, and the number of comments. By examining how these metrics relate to different diversity domains, we aim to gain a more comprehensive understanding of how content diversity impacts not only subscriber growth but also overall engagement and interaction across YouTube channels.</p>
+
