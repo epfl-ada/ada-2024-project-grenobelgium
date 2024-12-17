@@ -128,3 +128,55 @@ However, we lack sufficient data between 2015 and the end of 2016, which prevent
     </p>
      </p> This plot reinforces the clusters identified in the previous visualization. However, it also highlights a limitation of Louvain's algorithm: it fails to recognize isolated categories as distinct clusters. Instead, these categories are often grouped with others, despite not sharing significant co-occurrence relationships. This issue arises because Louvain's method focuses on maximizing modularity, which can sometimes lead to less accurate representations of small or isolated communities that lack strong connections. To address this, additional refinement techniques or alternative community detection algorithms might be necessary to better capture these isolated categories.    </p>
   </section>
+<section id="Design of a Channel Diversity Metric: A Quantitative Approach to Content Diversity">
+   <!-- Title -->
+    <h1>III. Design of a Channel Diversity Metric: A Quantitative Approach to Content Diversity</h1>
+
+    <!-- Introduction -->
+    <p>To evaluate how diverse the content of a YouTube channel is, we propose a quantitative metric that considers the spread of videos across different categories and themes. This section describes the methodology and rationale for developing this metric.</p>
+
+    <!-- Conceptual Framework -->
+    <h2>1. Conceptual Framework</h2>
+    <p>Content diversity can be defined as the variation in topics, video types, and audience engagement patterns within a channel. A diverse content strategy may attract a broader audience but can also fragment the existing viewer base.</p>
+
+    <!-- Image Placeholder -->
+    <img src="photo1" alt="Conceptual Framework Diagram" style="width:100%; height:auto;">
+
+    <!-- Metric Design -->
+    <h2>2. Metric Design</h2>
+    <p>We calculate the content diversity score using two primary approaches:</p>
+    <ul>
+        <li><strong>Category Entropy:</strong> Measures the dispersion of videos across predefined categories.</li>
+        <li><strong>Video Theme Clustering:</strong> Identifies the variety of themes using unsupervised learning techniques.</li>
+    </ul>
+
+    <!-- Image Placeholder -->
+    <img src="photo2" alt="Category Entropy Calculation" style="width:100%; height:auto;">
+
+    <h3>2.1. Category Entropy</h3>
+    <p>Entropy quantifies the unpredictability in the distribution of videos. For a given channel, it is calculated as:</p>
+    <blockquote>
+        <p><em>Entropy = -&#8721; (p<sub>i</sub> * log<sub>2</sub>(p<sub>i</sub>))</em></p>
+    </blockquote>
+    <p>Where <em>p<sub>i</sub></em> is the proportion of videos in category <em>i</em>.</p>
+
+    <!-- Image Placeholder -->
+    <img src="photo3" alt="Entropy Formula Application" style="width:100%; height:auto;">
+
+    <h3>2.2. Video Theme Clustering</h3>
+    <p>We use clustering techniques (e.g., K-means, DBSCAN) to group videos based on text-based metadata such as titles, tags, and descriptions. This allows us to identify recurring themes and measure their diversity.</p>
+
+    <!-- Image Placeholder -->
+    <img src="photo4" alt="Clustering Visualization" style="width:100%; height:auto;">
+
+    <!-- Interpretation of Results -->
+    <h2>3. Interpretation of Results</h2>
+    <p>A higher diversity score indicates a wider range of content, while a lower score reflects a more focused content strategy. The trade-offs between content diversity and audience loyalty will be analyzed in the subsequent sections.</p>
+
+    <!-- Conclusion -->
+    <h2>4. Summary</h2>
+    <p>The proposed channel diversity metric combines entropy analysis and clustering techniques to provide a comprehensive evaluation of content variation. This approach offers insights into the impact of content strategy on channel performance.</p>
+
+    <!-- Image Placeholder -->
+    <img src="photo5" alt="Summary Visualization" style="width:100%; height:auto;">
+    </section>
