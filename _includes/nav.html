@@ -1,3 +1,23 @@
+<style>
+  .navbar-custom {
+    transition: all 0.3s ease;
+  }
+  .navbar-custom.shrink {
+    padding: 10px 0;
+  }
+  .navbar-custom .nav-item.shrink-bar {
+    border-right: 1px solid #888;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+  }
+  .navbar-custom.shrink .nav-item.shrink-bar {
+    border-right: 1px solid #888;
+    margin-right: 5px;
+    height: 30px; /* Adjust as needed */
+    align-self: center; /* Center the bar vertically */
+  }
+</style>
+
 <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom {% if page.nav-short %}top-nav-short-permanent{% else %}top-nav-regular{% endif %}" style="background: linear-gradient(to right, #ff0000, #ffffff);">
 
   <a class="navbar-brand" href="{{ '/' | absolute_url }}">GrenoBelgium</a>
@@ -18,6 +38,16 @@
         <a class="nav-link scroll-link" href="#data-overview">Data Overview</a>
       </li>
       <!-- Remove links to sections that no longer exist -->
+      <li class="nav-item shrink-bar"></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="sourcesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sources
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sourcesDropdown">
+          <a class="dropdown-item" href="https://github.com/epfl-dlab/YouNiverse">YouNiverse GitHub</a>
+          <a class="dropdown-item" href="https://zenodo.org/records/4650046">YouNiverse dataset</a>
+        </div>
+      </li>
     </ul>
   </div>
 
@@ -40,3 +70,14 @@
 </nav>
 
 {% include search.html %}
+
+<script>
+  window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar-custom');
+    if (window.scrollY > 50) {
+      navbar.classList.add('shrink');
+    } else {
+      navbar.classList.remove('shrink');
+    }
+  });
+</script>
