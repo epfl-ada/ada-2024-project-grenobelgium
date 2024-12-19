@@ -193,7 +193,73 @@ $$</p>
 <li><strong>Gaming-focused</strong>: Lower diversity (dominant "Gaming" category with some overlap).</li>
 <li><strong>Comedy-only</strong>: Lowest diversity (single category).</li>
 </ol>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Channel</th>
+                <th>Diversity Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Diverse-independent</td>
+                <td>2.775469</td>
+            </tr>
+            <tr>
+                <td>Diverse-related</td>
+                <td>1.633916</td>
+            </tr>
+            <tr>
+                <td>Gaming-focused</td>
+                <td>0.589424</td>
+            </tr>
+            <tr>
+                <td>Comedy-only</td>
+                <td>0.000000</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+Assurez-vous d'ajouter le style suivant dans votre fichier CSS ou dans une balise <style> de votre site si ce n'est pas déjà fait :
 
+css
+Copier le code
+.table-container {
+    width: 100%;
+    margin: 20px 0;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: center;
+    padding: 15px;
+}
+
+th {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+td {
+    color: #333333;
+}
 <p><strong>The results seem to be coherent with our expectations. Nice!</strong></p>
 
 <h1>2. Application on real channel data</h1>
