@@ -134,27 +134,119 @@ However, we lack sufficient data between 2015 and the end of 2016, which prevent
 
 <p>We want to evaluate the diversity of a channel based not only on the distribution of categories it publishes but also on the relatedness of those categories. Specifically, a channel that publishes content in categories that rarely co-occur (categories that are less related) should be considered more diverse than one that publishes content in closely related categories.</p>
 
-<h3>i. Entropy: Measuring Category Distribution</h3>
+<h5>i. Entropy: Measuring Category Distribution</h5>
 
-<p>The entropy term captures the <strong>spread</strong> of content across different categories in a channel. If a channel focuses on a narrow set of categories, entropy will be low, while a more balanced distribution of content across categories will yield higher entropy. Formally, entropy is calculated as:</p>
+<p>The entropy term captures the <strong>spread</strong> of content across different categories in a channel. If a channel focuses on a narrow set of categories, entropy will be low, while a more balanced distribution of content across categories will yield higher entropy. Formally, entropy is calculated as</p>
 
-<p>$$
-H = - \sum<em>{i=1}^{n} p</em>i \log(p_i)
-$$</p>
+<p>
+    <math display="block" class="tml-display" style="display:block math;">
+        <mrow>
+          <mi>H</mi>
+          <mo>=</mo>
+          <mo form="prefix" stretchy="false">−</mo>
+          <mrow>
+            <munderover>
+              <mo stretchy="true">∑</mo>
+              <mrow>
+                <mi>i</mi>
+                <mo>=</mo>
+                <mn>1</mn>
+              </mrow>
+              <mi>n</mi>
+            </munderover>
+          </mrow>
+          <msub>
+            <mi>p</mi>
+            <mi>i</mi>
+          </msub>
+          <mrow>
+            <mi>log</mi>
+            <mo>⁡</mo>
+          </mrow>
+          <mo form="prefix" stretchy="false">(</mo>
+          <msub>
+            <mi>p</mi>
+            <mi>i</mi>
+          </msub>
+          <mo form="postfix" stretchy="false">)</mo>
+        </mrow>
+      </math>
+</p>
 
-<p>where $(p_i)$ is the proportion of content in category $(i)$ (estimated directly from the channel's category distribution), and $(n)$ is the total number of unique categories within the channel. A higher value of entropy indicates that the channel is more diverse in terms of the variety of topics it covers.</p>
+<p>where <math><msub><mi>p</mi><mi>i</mi></msub></math> is the proportion of content in category <math><mi>i</mi></math> (estimated directly from the channel's category distribution), and <math><mi>n</mi></math> is the total number of unique categories within the channel. A higher value of entropy indicates that the channel is more diverse in terms of the variety of topics it covers.</p>
 
-<h3>ii. Normalized Mutual Information (NMI): Adjusting for Category Relationships</h3>
+
+<h5>ii. Normalized Mutual Information (NMI): Adjusting for Category Relationships</h5>
 
 <p>While entropy accounts for the spread of content, it does not capture how the categories are related. Channels that use categories with <strong>high co-occurrence</strong> may appear diverse at first glance, but in reality, they may be focusing on overlapping topics. To account for this, we incorporate <strong>Normalized Mutual Information (NMI)</strong>.</p>
 
-<p>The NMI between two categories $(i)$ and $(j)$ is given by:</p>
+<p>The NMI between two categories <math><mi>i</mi></math> and <math><mi>j</mi></math> is given by:</p>
 
-<p>$$
-\text{NMI}(i,j) = \frac{I(i,j)}{\max(H(i), H(j))}
-$$</p>
+<p>
+    <math display="block" class="tml-display" style="display:block math;">
+        <mrow>
+          <mtext>NMI</mtext>
+          <mo form="prefix" stretchy="false">(</mo>
+          <mi>i</mi>
+          <mo separator="true">,</mo>
+          <mi>j</mi>
+          <mo form="postfix" stretchy="false">)</mo>
+          <mo>=</mo>
+          <mfrac>
+            <mrow>
+              <mi>I</mi>
+              <mo form="prefix" stretchy="false">(</mo>
+              <mi>i</mi>
+              <mo separator="true">,</mo>
+              <mi>j</mi>
+              <mo form="postfix" stretchy="false" lspace="0em" rspace="0em">)</mo>
+            </mrow>
+            <mrow>
+              <mrow>
+                <mi>max</mi>
+                <mo>⁡</mo>
+              </mrow>
+              <mo form="prefix" stretchy="false">(</mo>
+              <mi>H</mi>
+              <mo form="prefix" stretchy="false">(</mo>
+              <mi>i</mi>
+              <mo form="postfix" stretchy="false">)</mo>
+              <mo separator="true">,</mo>
+              <mi>H</mi>
+              <mo form="prefix" stretchy="false">(</mo>
+              <mi>j</mi>
+              <mo form="postfix" stretchy="false">)</mo>
+              <mo form="postfix" stretchy="false" lspace="0em" rspace="0em">)</mo>
+            </mrow>
+          </mfrac>
+        </mrow>
+      </math>
+</p>
 
-<p>where $(I(i,j))$ is the <strong>mutual information</strong> between categories $(i)$ and $(j)$, and $(H(i))$, $(H(j))$ are the individual entropies of the categories. </p>
+<p>where <math>
+    <mrow>
+      <mi>I</mi>
+      <mo form="prefix" stretchy="false">(</mo>
+      <mi>i</mi>
+      <mo separator="true">,</mo>
+      <mi>j</mi>
+      <mo form="postfix" stretchy="false">)</mo>
+    </mrow>
+  </math> is the <strong>mutual information</strong> between categories <math><mi>i</mi></math> and <math><mi>j</mi></math>, and <math>
+    <mrow>
+      <mi>H</mi>
+      <mo form="prefix" stretchy="false">(</mo>
+      <mi>i</mi>
+      <mo form="postfix" stretchy="false">)</mo>
+    </mrow>
+  </math>, <math>
+    <mrow>
+      <mi>H</mi>
+      <mo form="prefix" stretchy="false">(</mo>
+      <mi>j</mi>
+      <mo form="postfix" stretchy="false">)</mo>
+    </mrow>
+  </math> are the individual entropies of the categories. </p>
 
 <p>The mutual information is computed using the global co-occurrence matrix of categories across all channels:</p>
 
