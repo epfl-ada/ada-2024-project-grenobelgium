@@ -127,12 +127,10 @@ However, we lack sufficient data between 2015 and the end of 2016, which prevent
         <img src="assets/img/interractive_conetwork.png" alt="Interactive Conetwork">
     </p>
      </p> This plot reinforces the clusters identified in the previous visualization. However, it also highlights a limitation of Louvain's algorithm: it fails to recognize isolated categories as distinct clusters. Instead, these categories are often grouped with others, despite not sharing significant co-occurrence relationships. This issue arises because Louvain's method focuses on maximizing modularity, which can sometimes lead to less accurate representations of small or isolated communities that lack strong connections. To address this, additional refinement techniques or alternative community detection algorithms might be necessary to better capture these isolated categories.    </p>
-  </section>
-<section id="Design of a Channel Diversity Metric: A Quantitative Approach to Content Diversity">
 
-    </section>
-<section id="Community detection on categories">
-<h1>III. Design of a Channel Diversity Metric: A Quantitative Approach to Content Diversity</h1>
+
+<section id="metric-design">
+<h2>Design of a Channel Diversity Metric: A Quantitative Approach to Content Diversity</h2>
 
 <p>We want to evaluate the diversity of a channel based not only on the distribution of categories it publishes but also on the relatedness of those categories. Specifically, a channel that publishes content in categories that rarely co-occur (categories that are less related) should be considered more diverse than one that publishes content in closely related categories.</p>
 

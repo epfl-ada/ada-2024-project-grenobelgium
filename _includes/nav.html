@@ -20,6 +20,9 @@
     padding-left: 20px; /* Add padding to move the team name to the right */
     color: white !important; /* Set the team name font color to white */
   }
+  html {
+    scroll-padding-top: 90px; /* Adjust based on navbar height */
+  }
 </style>
 
 <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom {% if page.nav-short %}top-nav-short-permanent{% else %}top-nav-regular{% endif %}" style="background: linear-gradient(to right, #ff0000, #ffffff);">
@@ -43,6 +46,9 @@
       </li>
       <li class="nav-item">
         <a class="nav-link scroll-link" href="#community-detection-on-categories">Community Detection</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link scroll-link" href="#metric-design">Metric Design</a>
       </li>
       <li class="nav-item shrink-bar"></li>
       <li class="nav-item dropdown">
