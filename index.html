@@ -8,13 +8,15 @@ title: "Unveiling the Secrets Behind YouTube Categories"
   <p style="font-size: 1.5em; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);">How does content diversity on YouTube influence audience engagement and channel growth?</p>
 </section>
 
+<div style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
+
 <section id="introduction">
   <h2>Introduction</h2>
-  <p>Every YouTuber starting out has to make a big decision: should they stick to what they're good at or try out different kinds of content? With over 2.7 billion users on YouTube and 500 hours of video uploaded every minute, the competition is very strong. Deciding whether to focus on a niche or to mix it up can really shape how your channel grows, how well you connect with your audience, and how successful you'll be in the long run.</p>
+  <p>Every YouTuber, at some point, faces a big question: should they stick to what they're good at or try something new? With over 2.7 billion users and 500 hours of video uploaded every minute, it's not an easy choice. The competition is massive, and whether you focus on one niche or branch out into different types of content can completely change how your channel grows, how well you connect with your audience, and how far you go.
 
-  <p>The goal of this project is to investigate this trade-off between specialization and diversification. By analyzing the YouNiverse dataset, which is made up of over 136,000 channels and 72 million videos, we aim to uncover patterns and insights that can guide content creators in making informed decisions about their content strategy.</p>
+  <p>That's what this project is all about—figuring out the trade-off between sticking to a niche and mixing it up. We're diving into the YouNiverse dataset, which has over 136,000 channels and 72 million videos, to uncover patterns and insights that can help creators make smarter choices about their content strategy.</p>
 
-  <p>Restricting ourselves to established channels with at least 10,000 subscribers, we examine how different approaches to diversification correlated with metrics of success, from subscriber growth to audience engagement.</p>
+  <p>To keep things simple, we're looking at established channels with at least 10,000 subscribers. The idea is to see how different approaches to content—whether super focused or more diverse—tie into success, from growing subscribers to keeping audiences engaged. Let's see what the data can tell us.</p>
 </section>
 
 <section id="research-questions">
@@ -58,8 +60,8 @@ Let's plot the total number of videos across all channels per category to compar
   </p> The graph below examines the relationship between the number of views and the number of subscribers across different categories, using data from the channels and time_series datasets. This analysis aims to highlight how engagement varies by a ratio between videos & subscribers.  </p>
     <img src="assets/img/views-per-video.png" alt="Plot 8">
 
-  </p> Since the creation of recommendation algorithms, fewer people watch videos from their subscribers list and tend to click on videos shown on their home page. Categories like Music are recommended to more people, but users don’t subscribe as much. The same scenario applies to categories like Comedy or Film & Animation. In contrast, Gaming or News & Politics offer more specialized content and are recommended primarily to fans. This graph is strongly correlated to whether a channel targets a general audience.</p>
-   </p> Let’s dive into the trends in views and subscribers over time to uncover interesting patterns and insights across different categories.</p>
+  </p> Since the creation of recommendation algorithms, fewer people watch videos from their subscribers list and tend to click on videos shown on their home page. Categories like Music are recommended to more people, but users don't subscribe as much. The same scenario applies to categories like Comedy or Film & Animation. In contrast, Gaming or News & Politics offer more specialized content and are recommended primarily to fans. This graph is strongly correlated to whether a channel targets a general audience.</p>
+   </p> Let's dive into the trends in views and subscribers over time to uncover interesting patterns and insights across different categories.</p>
   <img src="assets/img/total-monthly-suscribers-per-category.png" alt="Plot 9">
     <img src="assets/img/total-number-videos-per-category.png" alt="Plot 10">
    </p> These two graphs show a cyclical evolution in the number of subscribers and views. This can be influenced by time periods when more people use YouTube, such as during holidays. Additionally, in winter, people tend to stay indoors and watch more content online.
@@ -68,7 +70,7 @@ We observe a spike in subscribers in March 2023 for the Music category, which co
 
 However, we lack sufficient data between 2015 and the end of 2016, which prevents us from fully analyzing the entire period from 2015 to 2019. </p>
 
-  </p>   Let’s now look at the monthly evolution of newly created channels to explore trends across different categories. </p>
+  </p>   Let's now look at the monthly evolution of newly created channels to explore trends across different categories. </p>
      <img src="assets/img/number-of-channel-created.png" alt="Plot 10">
     <p>This graph, which represents the number of channels created per month by category, reveals several interesting trends:</p>
     <ul>
@@ -89,7 +91,7 @@ However, we lack sufficient data between 2015 and the end of 2016, which prevent
 <section id="community-detection-on-categories">
     <h2>Community Detection on Categories</h2>
     <p>
-        YouTube’s world of content is anything but isolated—categories constantly overlap, connected by audiences who love a mix of things. Communities naturally form where these categories intersect, bringing together viewers with shared interests across different types of content. In this section, we take a closer look at how these connections come to life, uncovering the relationships and overlaps that define the platform's unique ecosystem.
+        YouTube's world of content is anything but isolated—categories constantly overlap, connected by audiences who love a mix of things. Communities naturally form where these categories intersect, bringing together viewers with shared interests across different types of content. In this section, we take a closer look at how these connections come to life, uncovering the relationships and overlaps that define the platform's unique ecosystem.
     </p>
 
     <p>
@@ -105,7 +107,7 @@ However, we lack sufficient data between 2015 and the end of 2016, which prevent
     </p>
 
     <p>
-        To get a clearer picture of how content categories relate to each other, we turn the co-occurrence data into a network plot. Here, categories become nodes, and their connections—edges—show how often they appear together across channels. This network view helps uncover clusters of categories that are closely linked, offering insights into how creators group their themes and tap into overlapping audience interests. It’s a powerful way to explore the dynamics of content diversification and identify key synergies shaping the platform.
+        To get a clearer picture of how content categories relate to each other, we turn the co-occurrence data into a network plot. Here, categories become nodes, and their connections—edges—show how often they appear together across channels. This network view helps uncover clusters of categories that are closely linked, offering insights into how creators group their themes and tap into overlapping audience interests. It's a powerful way to explore the dynamics of content diversification and identify key synergies shaping the platform.
     </p>
     <p>
         <img src="assets/img/conetwork.png" alt="Conetwork">
@@ -250,13 +252,61 @@ However, we lack sufficient data between 2015 and the end of 2016, which prevent
 
 <p>The mutual information is computed using the global co-occurrence matrix of categories across all channels:</p>
 
-<p>$$
-I(i,j) = p<em>{ij} \log \left( \frac{p</em>{ij}}{p<em>i^{\text{global}} p</em>j^{\text{global}}} \right)
-$$</p>
+<p>
+    <math display="block" class="tml-display" style="display:block math;">
+        <mrow>
+          <mi>I</mi>
+          <mo form="prefix" stretchy="false">(</mo>
+          <mi>i</mi>
+          <mo separator="true">,</mo>
+          <mi>j</mi>
+          <mo form="postfix" stretchy="false">)</mo>
+          <mo>=</mo>
+          <msub>
+            <mi>p</mi>
+            <mrow>
+              <mi>i</mi>
+              <mi>j</mi>
+            </mrow>
+          </msub>
+          <mrow>
+            <mi>log</mi>
+            <mo>⁡</mo>
+          </mrow>
+          <mrow>
+            <mo fence="true" form="prefix">(</mo>
+            <mfrac>
+              <msub>
+                <mi>p</mi>
+                <mrow>
+                  <mi>i</mi>
+                  <mi>j</mi>
+                </mrow>
+              </msub>
+              <mrow>
+                <msubsup>
+                  <mi>p</mi>
+                  <mi>i</mi>
+                  <mtext>global</mtext>
+                </msubsup>
+                <msubsup>
+                  <mi>p</mi>
+                  <mi>j</mi>
+                  <mtext>global</mtext>
+                </msubsup>
+              </mrow>
+            </mfrac>
+            <mo fence="true" form="postfix">)</mo>
+          </mrow>
+        </mrow>
+      </math>
+</p>
 
 <p>where:
-- $(p<em>{ij})$ is the probability of categories $(i)$ and $(j)$ co-occurring across all channels.
-- $(p</em>i^{\text{global}})$ and $(p_j^{\text{global}})$ are the global marginal probabilities of categories $(i)$ and $(j)$, respectively.</p>
+<ul>
+    <li><math><msub><mi>p</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></math> is the probability of categories <math><mi>i</mi></math> and <math><mi>j</mi></math> co-occurring across all channels, and</li>
+    <li><math><msubsup><mi>p</mi><mi>i</mi><mtext>global</mtext></msubsup></math> and <math><msubsup><mi>p</mi><mi>j</mi><mtext>global</mtext></msubsup></math> are the global marginal probabilities of categories <math><mi>i</mi></math> and <math><mi>j</mi></math>, respectively.</li>
+</ul>
 
 <p>If two categories often co-occur, their NMI will be high, suggesting they are not independent, and thus the diversity score is penalized for such overlap.</p>
 
@@ -264,9 +314,9 @@ $$</p>
 
 <p>The final <strong>Channel Diversity Metric</strong> is computed as:</p>
 
-<p>$$
-\text{Channel Diversity} = \frac{- \sum<em>{i\neq j} p</em>i \log(p_i) \cdot (1 - \text{NMI}(i,j))}{\log(n)}
-$$</p>
+<p>
+    <math display="block" class="tml-display" style="display:block math;"><mrow><mtext>Channel Diversity</mtext><mo>=</mo><mfrac><mrow><mo lspace="0em" rspace="0em">−</mo><mo stretchy="true">∑</mo><mo>&lt;</mo><mi>e</mi><mi>m</mi><mo>&gt;</mo><mrow><mi>i</mi><mo>≠</mo><mi>j</mi></mrow><mi>p</mi><mo>&lt;</mo><mi>/</mi><mi>e</mi><mi>m</mi><mo>&gt;</mo><mi>i</mi><mrow><mspace width="0.1667em"></mspace><mi>log</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>⋅</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mtext>NMI</mtext><mo form="prefix" stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false" lspace="0em" rspace="0em">)</mo></mrow><mrow><mrow><mi>log</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false" lspace="0em" rspace="0em">)</mo></mrow></mfrac></mrow></math>
+</p>
 
 <p>This formula combines the entropy term, which encourages a broad distribution of categories, with the NMI adjustment, which penalizes the use of highly related categories. The division by $(log(n))$ normalizes the score, ensuring comparability across channels with different numbers of categories.</p>
 
@@ -323,26 +373,26 @@ $$</p>
 <ol>
 <li><p><strong>Exponential Distribution</strong>: The probability density function (PDF) is given by:</p>
 
-<p>$$
-f(x|\lambda) = \lambda e^{-\lambda x}, \quad x \geq 0
-$$</p></li>
+<p>
+    <math display="block" class="tml-display" style="display:block math;"><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>|</mi><mi>λ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>λ</mi><msup><mi>e</mi><mrow><mo lspace="0em" rspace="0em">−</mo><mi>λ</mi><mi>x</mi></mrow></msup><mo separator="true">,</mo><mspace width="1em"></mspace><mi>x</mi><mo>≥</mo><mn>0</mn></mrow></math>
+</p></li>
 <li><p><strong>Truncated Normal Distribution</strong>: A normal distribution restricted to a specific range, typically used when data is confined within certain bounds. The truncated normal PDF is:</p>
 
-<p>$$
-f(x|\mu, \sigma, a, b) = \frac{\phi\left(\frac{x - \mu}{\sigma}\right)}{\sigma[\Phi\left(\frac{b - \mu}{\sigma}\right) - \Phi\left(\frac{a - \mu}{\sigma}\right)]}, \quad a \leq x \leq b
-$$</p>
+<p>
+    <math display="block" class="tml-display" style="display:block math;"><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>|</mi><mi>μ</mi><mo separator="true">,</mo><mi>σ</mi><mo separator="true">,</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>ϕ</mi><mrow><mo fence="true" form="prefix">(</mo><mfrac><mrow><mi>x</mi><mo>−</mo><mi>μ</mi></mrow><mi>σ</mi></mfrac><mo fence="true" form="postfix">)</mo></mrow></mrow><mrow><mi>σ</mi><mo form="prefix" stretchy="false">[</mo><mrow><mi mathvariant="normal">Φ</mi></mrow><mrow><mo fence="true" form="prefix">(</mo><mfrac><mrow><mi>b</mi><mo>−</mo><mi>μ</mi></mrow><mi>σ</mi></mfrac><mo fence="true" form="postfix">)</mo></mrow><mo>−</mo><mrow><mi mathvariant="normal">Φ</mi></mrow><mrow><mo fence="true" form="prefix">(</mo><mfrac><mrow><mi>a</mi><mo>−</mo><mi>μ</mi></mrow><mi>σ</mi></mfrac><mo fence="true" form="postfix">)</mo></mrow><mo form="postfix" stretchy="false" lspace="0em" rspace="0em">]</mo></mrow></mfrac><mo separator="true">,</mo><mspace width="1em"></mspace><mi>a</mi><mo>≤</mo><mi>x</mi><mo>≤</mo><mi>b</mi></mrow></math>
+</p>
 
 <p>where $\phi$ is the standard normal PDF and $\Phi$ is the cumulative distribution function (CDF).</p></li>
 <li><p><strong>Gamma Distribution</strong>:</p>
 
-<p>$$
-f(x|\alpha, \beta) = \frac{x^{\alpha-1} e^{-x/\beta}}{\beta^\alpha \Gamma(\alpha)}, \quad x \geq 0
-$$</p></li>
+<p>
+    <math display="block" class="tml-display" style="display:block math;"><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>|</mi><mi>α</mi><mo separator="true">,</mo><mi>β</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mrow><msup><mi>x</mi><mrow><mi>α</mi><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>e</mi><mrow><mo lspace="0em" rspace="0em">−</mo><mi>x</mi><mi>/</mi><mi>β</mi></mrow></msup></mrow><mrow><msup><mi>β</mi><mi>α</mi></msup><mrow><mi mathvariant="normal">Γ</mi></mrow><mo form="prefix" stretchy="false">(</mo><mi>α</mi><mo form="postfix" stretchy="false" lspace="0em" rspace="0em">)</mo></mrow></mfrac><mo separator="true">,</mo><mspace width="1em"></mspace><mi>x</mi><mo>≥</mo><mn>0</mn></mrow></math>
+</p></li>
 <li><p><strong>Beta Distribution</strong>:</p>
 
-<p>$$
-f(x|\alpha, \beta) = \frac{x^{\alpha-1}(1-x)^{\beta-1}}{B(\alpha, \beta)}, \quad 0 \leq x \leq 1
-$$</p></li>
+<p>
+    <math display="block" class="tml-display" style="display:block math;"><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>|</mi><mi>α</mi><mo separator="true">,</mo><mi>β</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mrow><msup><mi>x</mi><mrow><mi>α</mi><mo>−</mo><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>x</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>β</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><mrow><mi>B</mi><mo form="prefix" stretchy="false">(</mo><mi>α</mi><mo separator="true">,</mo><mi>β</mi><mo form="postfix" stretchy="false" lspace="0em" rspace="0em">)</mo></mrow></mfrac><mo separator="true">,</mo><mspace width="1em"></mspace><mn>0</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>1</mn></mrow></math>
+</p></li>
 </ol>
 
 <p>To determine which of these distributions is most plausible for our diversity score data, we proceed by analyzing their goodness of fit. The first step in this process is to visualize the data against the theoretical distribution using a <strong>Quantile-Quantile (QQ) plot</strong>: A QQ plot compares the quantiles of the empirical data against the quantiles of a given theoretical distribution. If the data follows the proposed distribution, the points in the QQ plot will lie approximately on a straight line.</p>
@@ -398,4 +448,4 @@ $$</p></li>
 <p>We plan to extend this analysis to other key metrics, including viewership, likes, and the number of comments. By examining how these metrics relate to different diversity domains, we aim to gain a more comprehensive understanding of how content diversity impacts not only subscriber growth but also overall engagement and interaction across YouTube channels.</p>
 
 
-    </section>
+</div>
