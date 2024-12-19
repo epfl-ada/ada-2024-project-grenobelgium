@@ -87,15 +87,9 @@ However, we lack sufficient data between 2015 and the end of 2016, which prevent
     </ul>
 </section>
 <section id="community-detection-on-categories">
-    <h3>Community Detection on Categories</h3>
+    <h2>Community Detection on Categories</h2>
     <p>
-        In the initial phase of our analysis, we will compute the co-occurrence matrix of categories across YouTube channels and visualize it using a heatmap and a network graph. The primary objective is to uncover relationships and overlaps between different types of content, which will allow us to gain insights into content diversification strategies and niche formation on the platform.
-    </p>
-    <p>
-        Understanding how categories co-occur will help us detect strong connections between content types (for instance: "Gaming" and "Music"), potentially indicating channels that cater to overlapping audiences. By visualizing these relationships as a network, we will highlight tightly connected clusters, revealing content ecosystems and emerging trends.
-    </p>
-    <p>
-        This analysis will also serve as a foundation for inspecting channel diversity in subsequent phases. By identifying which channels cover multiple categories, we can better understand the impact of content diversification on channel growth and audience engagement.
+        In the first phase of our analysis, we focus on computing the co-occurrence matrix of categories across YouTube channels and visualizing the relationships using a heatmap and network graph. This helps us uncover how different types of content overlap and connect, such as the strong links between “Gaming” and “Music,” which often cater to overlapping audiences. By mapping these relationships as a network, we identify tightly connected clusters that reveal content ecosystems and emerging trends. This analysis also lays the groundwork for exploring channel diversity, helping us understand how covering multiple categories influences channel growth and audience engagement.
     </p>
     <p>
         <img src="assets/img/heatmap.png" alt="Heatmap">
@@ -105,7 +99,7 @@ However, we lack sufficient data between 2015 and the end of 2016, which prevent
         The heatmap indicates that categories such as Entertainment and People & Blogs serve as central connectors among other categories. Additionally, it highlights frequent co-occurrences among categories like Gaming, Music, Film & Animation, and Comedy.
     </p>
 
-    <h3>Co_occurrence Network</h3>
+    <h4>Co-occurrence Network</h4>
     <p>
         To better understand the relationships between different content categories, we analyze the co-occurrence patterns between them across channels. By visualizing these co-occurrences in a network plot, we can uncover clusters of categories that frequently appear together, providing insights into content strategies and audience interests. This visualization will help us identify key content synergies and how channels group their themes, ultimately shedding light on the dynamics of content diversification on the platform.
     </p>
@@ -127,7 +121,7 @@ However, we lack sufficient data between 2015 and the end of 2016, which prevent
         <img src="assets/img/interractive_conetwork.png" alt="Interactive Conetwork">
     </p>
      </p> This plot reinforces the clusters identified in the previous visualization. However, it also highlights a limitation of Louvain's algorithm: it fails to recognize isolated categories as distinct clusters. Instead, these categories are often grouped with others, despite not sharing significant co-occurrence relationships. This issue arises because Louvain's method focuses on maximizing modularity, which can sometimes lead to less accurate representations of small or isolated communities that lack strong connections. To address this, additional refinement techniques or alternative community detection algorithms might be necessary to better capture these isolated categories.    </p>
-
+</section>
 
 <section id="metric-design">
 <h2>Design of a Channel Diversity Metric: A Quantitative Approach to Content Diversity</h2>
