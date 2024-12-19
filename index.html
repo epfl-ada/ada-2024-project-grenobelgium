@@ -89,24 +89,28 @@ However, we lack sufficient data between 2015 and the end of 2016, which prevent
 <section id="community-detection-on-categories">
     <h2>Community Detection on Categories</h2>
     <p>
-        In the first phase of our analysis, we focus on computing the co-occurrence matrix of categories across YouTube channels and visualizing the relationships using a heatmap and network graph. This helps us uncover how different types of content overlap and connect, such as the strong links between “Gaming” and “Music,” which often cater to overlapping audiences. By mapping these relationships as a network, we identify tightly connected clusters that reveal content ecosystems and emerging trends. This analysis also lays the groundwork for exploring channel diversity, helping us understand how covering multiple categories influences channel growth and audience engagement.
+        YouTube’s world of content is anything but isolated—categories constantly overlap, connected by audiences who love a mix of things. Communities naturally form where these categories intersect, bringing together viewers with shared interests across different types of content. In this section, we take a closer look at how these connections come to life, uncovering the relationships and overlaps that define the platform's unique ecosystem.
     </p>
+
+    <p>
+        To get a better look at these connections, we use a heatmap to show the co-occurrence matrix of categories. It highlights how often categories overlap and where the strongest links are, making the clusters easy to spot.
+    </p>
+
     <p>
         <img src="assets/img/heatmap.png" alt="Heatmap">
     </p>
-    <h4>Observations</h4>
+
     <p>
-        The heatmap indicates that categories such as Entertainment and People & Blogs serve as central connectors among other categories. Additionally, it highlights frequent co-occurrences among categories like Gaming, Music, Film & Animation, and Comedy.
+        The heatmap shows that categories like Entertainment and People & Blogs act as central hubs, connecting a wide range of other categories. It also highlights strong overlaps between categories such as Gaming, Music, Film & Animation, and Comedy, revealing how these content types often go hand in hand.
     </p>
 
-    <h4>Co-occurrence Network</h4>
     <p>
-        To better understand the relationships between different content categories, we analyze the co-occurrence patterns between them across channels. By visualizing these co-occurrences in a network plot, we can uncover clusters of categories that frequently appear together, providing insights into content strategies and audience interests. This visualization will help us identify key content synergies and how channels group their themes, ultimately shedding light on the dynamics of content diversification on the platform.
+        To get a clearer picture of how content categories relate to each other, we turn the co-occurrence data into a network plot. Here, categories become nodes, and their connections—edges—show how often they appear together across channels. This network view helps uncover clusters of categories that are closely linked, offering insights into how creators group their themes and tap into overlapping audience interests. It’s a powerful way to explore the dynamics of content diversification and identify key synergies shaping the platform.
     </p>
     <p>
         <img src="assets/img/conetwork.png" alt="Conetwork">
     </p>
-    <h4>Observations</h4>
+
     <p>
         The central role of the "People & Blogs" and "Entertainment" categories suggests they serve as hubs that connect various other content genres on YouTube. These more general, cross-cutting categories likely overlap with and incorporate elements from more specialized categories. The clustering of "Gaming", "Music", "Comedy", and "Film & Animation" indicates these genres tend to co-occur and may share common audiences or creative elements. This makes sense, as gaming, music, comedy, and animated content often intersect in the entertainment space.
     </p>
@@ -114,13 +118,15 @@ However, we lack sufficient data between 2015 and the end of 2016, which prevent
         Similarly, the clustering of "Education" and "Howto & Style" points to synergies between instructional/tutorial content and self-improvement/lifestyle content. These categories likely cater to viewers seeking knowledge and personal development. The relative isolation of categories like "Sports", "Science & Technology", and "News & Politics" suggests they have more distinct, specialized content that does not overlap as readily with the broader entertainment and lifestyle-oriented categories. These genres likely appeal to more niche audiences.
     </p>
     <p>
-        After visualizing the co-occurrence network, we will apply clustering techniques to identify distinct groups of categories more clearly. This will help us pinpoint content clusters that frequently co-occur, revealing patterns in how channels organize their topics. To achieve this, we will use Louvain's method, a community detection algorithm that maximizes modularity to find optimal groupings. The method works by iteratively assigning nodes (categories) to communities in a way that increases the density of edges within communities while minimizing the density between them, providing clear, meaningful clusters.
+        After visualizing the co-occurrence network, we will apply clustering techniques to identify distinct groups of categories more clearly. This helps us pinpoint content clusters that frequently co-occur, revealing patterns in how channels organize their topics. To achieve this, we will use Louvain's method, a community detection algorithm that maximizes modularity to find optimal groupings. The method works by iteratively assigning nodes (categories) to communities in a way that increases the density of edges within communities while minimizing the density between them, providing clear, meaningful clusters.
     </p>
     <p><em>Let's make things more interactive!</em></p>
     <p>
         <img src="assets/img/interractive_conetwork.png" alt="Interactive Conetwork">
     </p>
-     </p> This plot reinforces the clusters identified in the previous visualization. However, it also highlights a limitation of Louvain's algorithm: it fails to recognize isolated categories as distinct clusters. Instead, these categories are often grouped with others, despite not sharing significant co-occurrence relationships. This issue arises because Louvain's method focuses on maximizing modularity, which can sometimes lead to less accurate representations of small or isolated communities that lack strong connections. To address this, additional refinement techniques or alternative community detection algorithms might be necessary to better capture these isolated categories.    </p>
+     </p>
+        This plot reinforces the clusters identified in the previous visualization. However, it also highlights a limitation of Louvain's algorithm: it fails to recognize isolated categories as distinct clusters. Instead, these categories are often grouped with others, despite not sharing significant co-occurrence relationships. This issue arises because Louvain's method focuses on maximizing modularity, which can sometimes lead to less accurate representations of small or isolated communities that lack strong connections. To address this, additional refinement techniques or alternative community detection algorithms might be necessary to better capture these isolated categories.
+    </p>
 </section>
 
 <section id="metric-design">
