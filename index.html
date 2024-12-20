@@ -35,62 +35,81 @@ title: "Unveiling the Secrets Behind YouTube Categories"
 
 <section id="data-overview">
   <h2>Data Overview</h2>
-  <p>The YouNiverse dataset is massive—over 136,000 English-language YouTube channels and more than 72 million videos. To keep things focused, we zero in on channels with more than 10,000 subscribers and at least 10 videos. This lets us look at creators who are already somewhat established while filtering out noise from smaller channels that might not have enough data to draw meaningful insights.</p>
-  <p>Of course, this comes with a trade-off. By excluding smaller channels, we might be overlooking different growth patterns or strategies that newer creators use to get started. It's worth keeping this in mind as we explore the data.</p>
-  <p>With that said, let's take a closer look at how channels and subscribers are distributed across different categories.</p>
+  <div>
+    <p><strong>[Scene: The YouNiverse Observatory, a dome of glowing charts and buzzing datapads. Yotuda, the wise sage of data, stands at the center, cloaked in holographic light. The apprentice enters, looking both curious and mildly overwhelmed.]</strong></p>
 
-<iframe src="assets/plots/category_distribution.html" width="100%" height="800px" frameborder="0" style="display:block; margin-bottom:-150px;"></iframe>
-<iframe src="assets/plots/subscribers_distribution.html" width="100%" height="800px" frameborder="0" style="display:block; margin-bottom:-175px;"></iframe>
+    <p><strong>Yotuda:</strong> Welcome to the YouNiverse Observatory. Vast, isn’t it? Over 136,000 YouTube channels and 72 million videos, floating in a cosmos of views and likes. It’s enough to make even a seasoned analyst say, “Let’s simplify.” And so we did.</p>
 
-  </p>As we can see, a few categories dominate the YouTube landscape. Music, Entertainment, Gaming, and People & Blogs make up an impressive 63% of all channels, standing out as the big players. Behind them, we see a range of other categories with plenty of active creators. But on the other hand, there are the niche categories like Nonprofits & Activism and Pets & Animals, which have far fewer channels, showing their more specialized appeal.
+    <p>[Yotuda waves a hand. A cascade of smaller dots representing channels fades away.]</p>
 
-  When we shift our focus to subscriber volume, the story stays similar but with a few twists. Those same four dominant categories claim an even larger slice of the pie—about 66% of all subscriptions—with Entertainment leading the charge. Interestingly, categories like Education and Sports show a different pattern. They have a solid number of channels but a much smaller share of subscribers, suggesting that their audiences might be more spread out, creating tougher competition for attention.</p>
- </p>Let's take a look the average number of videos per channel for each category to understand content creation patterns.</p>
+    <p><strong>Yotuda:</strong> Behold! Channels with more than 10,000 subscribers and at least 10 videos. A filter, yes, but also a choice. We focus on creators who’ve made it—the stars of this show. Yet, by doing so, we risk ignoring the strategies of newer creators, those who might one day rival these giants. A trade-off, as always.</p>
 
-  <img src="assets/img/avg-number-videoes-per-category.png" alt="Plot 4">
-   </p>News & Politics channels have the highest number of videos per channel by far, publishing numerous videos each day to cover global events.
+    <p><strong>Apprentice:</strong> Like choosing between coffee and sleep?</p>
 
-Let's plot the total number of videos across all channels per category to compare the overall content volume.</p>
- <img src="assets/img/total-number-videos-per-category.png" alt="Plot 5">
-  </p> News & Politics remain in the lead despite their relatively low number of channels thanks to their large amount of videos, they are closely followed by categories like Entertainment, Music, and Gaming, which have a significantly larger number of channels.</p>
-  </p>   Afterwards, we visualize the average join date for each category to compare the relative age of channels across different categories. </p>
-  <img src="assets/img/Average-join-date.png" alt="Plot 6">
-   </p> On average, the oldest channels are found in the Nonprofits & Activism and Auto & Vehicles categories, likely due to their long-established presence and stable audience. In contrast, the most recent channels, driven by trends and shifting interests, are found in People & Blogs and Gaming.  </p>
-  </p> Now we can examine how views are distributed among various categories, providing insights into which categories attract the most attention and engagement.</p>
-   <img src="assets/img/Total-number-of-total-views.png" alt="Plot 7">
-   </p>The categories that gather the most views are Entertainment and Music, as these categories are more general and trendy. In contrast, more niche categories like Autos & Vehicles, Pets & Animals, or Travel & Events are more specialized.</p>
-  </p> The graph below examines the relationship between the number of views and the number of subscribers across different categories, using data from the channels and time_series datasets. This analysis aims to highlight how engagement varies by a ratio between videos & subscribers.  </p>
+    <p><strong>Yotuda:</strong> Precisely. Both have value, but only one gets you through a deadline. Now, look closer.</p>
+  </div>
+
+  <div>
+    <h3>Category Distribution</h3>
+    <iframe src="assets/plots/category_distribution.html" width="100%" height="800px" frameborder="0" style="display:block; margin-bottom:-150px;"></iframe>
+    <iframe src="assets/plots/subscribers_distribution.html" width="100%" height="800px" frameborder="0" style="display:block; margin-bottom:-175px;"></iframe>
+
+    <p><strong>Yotuda:</strong> Ah, categories. These are the constellations of the YouNiverse. Music, Entertainment, Gaming, and People & Blogs—together, they dominate the skies, claiming 63% of all channels. But their hunger for subscribers is even greater: 66% of all subscriptions are theirs. Entertainment, of course, shines the brightest.</p>
+
+    <p><strong>Apprentice:</strong> But some categories look… scattered?</p>
+
+    <p><strong>Yotuda:</strong> Yes, Education and Sports. Many channels they boast, but their audiences are like grains of sand on a beach—plentiful, but hard to gather in one place. A lesson in the cost of competition, perhaps.</p>
+  </div>
+
+  <div>
+    <h3>Content Creation Patterns</h3>
+    <p>[The holograms shift to show bar charts labeled “Videos Per Channel” and “Total Videos Per Category.”]</p>
+
+    <p><strong>Yotuda:</strong> And now, the rhythm of creation. News & Politics—unstoppable. The most videos per channel by far. Why? To cover global events, they must be relentless. No time for cat videos when there’s a summit in progress.</p>
+
+    <img src="assets/img/avg-number-videoes-per-category.png" alt="Plot 4">
+    <p>News & Politics channels have the highest number of videos per channel by far, publishing numerous videos each day to cover global events.</p>
+
+    <img src="assets/img/total-number-videos-per-category.png" alt="Plot 5">
+    <p><strong>Yotuda:</strong> Yet, when we look at total content volume, the picture changes. News & Politics still lead, but not by much. Categories like Entertainment, Music, and Gaming have far more channels contributing to the stream. A flood of content, but with less intensity per creator.</p>
+  </div>
+
+  <div>
+    <h3>Channel Age Distribution</h3>
+    <p>[A new chart appears, marked “Channel Join Dates.”]</p>
+
+    <img src="assets/img/Average-join-date.png" alt="Plot 6">
+    <p><strong>Yotuda:</strong> The timeline of the YouNiverse. Nonprofits & Activism and Autos & Vehicles—old souls. These channels have been around since the early days, steady and loyal. But the young ones? People & Blogs and Gaming. Fast-moving, trend-following, their rise fueled by shifting interests.</p>
+  </div>
+
+  <div>
+    <h3>Engagement and Viewer Patterns</h3>
+    <p>[The air crackles as graphs labeled “Views Per Category” and “Subscriber-View Ratios” appear.]</p>
+
+    <img src="assets/img/Total-number-of-total-views.png" alt="Plot 7">
+    <p><strong>Yotuda:</strong> Now, let’s talk engagement. See how views gather like fireflies. Entertainment and Music—bright, captivating, universal in their appeal. But the niche categories? Autos & Vehicles, Pets & Animals, Travel & Events. Their light is softer, their charm more specialized.</p>
+
     <img src="assets/img/views-per-video.png" alt="Plot 8">
+    <p><strong>Apprentice:</strong> And this ratio—views versus subscribers?</p>
+    <p><strong>Yotuda:</strong> A tale of algorithms, it is. Music, Comedy, Film & Animation—recommended widely, yet their subscribers remain few. The masses click, but loyalty lags. Gaming and News & Politics, on the other hand, cultivate niches. Their fans are fewer, but deeply engaged.</p>
+  </div>
 
-  </p> Since the creation of recommendation algorithms, fewer people watch videos from their subscribers list and tend to click on videos shown on their home page. Categories like Music are recommended to more people, but users don't subscribe as much. The same scenario applies to categories like Comedy or Film & Animation. In contrast, Gaming or News & Politics offer more specialized content and are recommended primarily to fans. This graph is strongly correlated to whether a channel targets a general audience.</p>
-   </p> Let's dive into the trends in views and subscribers over time to uncover interesting patterns and insights across different categories.</p>
-  <img src="assets/img/total-monthly-suscribers-per-category.png" alt="Plot 9">
-    <img src="assets/img/total-number-videos-per-category.png" alt="Plot 10">
-   </p> These two graphs show a cyclical evolution in the number of subscribers and views. This can be influenced by time periods when more people use YouTube, such as during holidays. Additionally, in winter, people tend to stay indoors and watch more content online.
+  <div>
+    <h3>Trends Over Time</h3>
+    <p>[The charts flicker, showing peaks and valleys labeled “Views Over Time” and “Subscribers Over Time.”]</p>
 
-We observe a spike in subscribers in March 2023 for the Music category, which could be due to a music artist going viral and gaining subscribers rapidly.
+    <img src="assets/img/total-monthly-suscribers-per-category.png" alt="Plot 9">
+    <p><strong>Yotuda:</strong> Patterns emerge. Cycles of activity tied to seasons and holidays. Winter, when the world retreats indoors, and subscribers grow. March 2023—Music sees a spike. A viral artist, perhaps? Yet, beware the gaps. Missing data from 2015 to 2016 veils parts of the story.</p>
+  </div>
 
-However, we lack sufficient data between 2015 and the end of 2016, which prevents us from fully analyzing the entire period from 2015 to 2019. </p>
-
-  </p>   Let's now look at the monthly evolution of newly created channels to explore trends across different categories. </p>
-     <img src="assets/img/number-of-channel-created.png" alt="Plot 10">
-    <p>This graph, which represents the number of channels created per month by category, reveals several interesting trends:</p>
-    <ul>
-        <li>
-            First, it's important to note that our dataset represents videos from channels with more than 10k subscribers and more than 10 videos—channels that have essentially "made it". This is evident in the effects at the extremes of the graph. This limitation could introduce bias into our analysis.
-        </li>
-        <li>
-            One notable trend is a general increase in all categories around 2012, likely due to a broader effect, possibly related to YouTube's growth or access at that time.
-        </li>
-        <li>
-            Additionally, we observe that music channels were dominant until mid-2014, with peaks in channel creation driven by trends, as YouTube was primarily used to share music during this period. Few people were making a living on YouTube in other domains, which explains the lower creation rates in those categories.
-        </li>
-        <li>
-            As the years go by, however, <strong>Entertainment</strong> and <strong>People & Blogs</strong> categories begin to emerge as YouTube staples, with more individuals becoming well-known and turning their channels into full-time careers, pushing these categories to the forefront by 2017.
-        </li>
-    </ul>
+  <div>
+    <h3>Channel Creation Trends</h3>
+    <img src="assets/img/number-of-channel-created.png" alt="Plot 10">
+    <p><strong>Yotuda:</strong> And here, the birth of stars. Around 2012, a surge across all categories. Perhaps YouTube itself was expanding, pulling creators into its orbit. Music reigned supreme until mid-2014. Then, a shift. Entertainment and People & Blogs rose, fueled by creators turning passion into careers.</p>
+  </div>
 </section>
-<section id="community-detection-on-categories">
+
+  <section id="community-detection-on-categories">
     <h2>Community Detection on Categories</h2>
     <p>
         YouTube's world of content is anything but isolated—categories constantly overlap, connected by audiences who love a mix of things. Communities naturally form where these categories intersect, bringing together viewers with shared interests across different types of content. In this section, we take a closer look at how these connections come to life, uncovering the relationships and overlaps that define the platform's unique ecosystem.
