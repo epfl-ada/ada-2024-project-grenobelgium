@@ -113,7 +113,7 @@ title: "Unveiling the Secrets Behind YouTube Categories"
 
   <section id="you-niverse-community-detection">
     <h2>Community Detection on Categories</h2>
-    
+
     <div class="scene">
         <p>
             <em>[Scene: The YouNiverse Observatory. The swirling holograms of data slowly dissolve as Yotuda turns to address the apprentice one last time.]</em>
@@ -128,7 +128,7 @@ title: "Unveiling the Secrets Behind YouTube Categories"
             <strong>Zentron:</strong> Greetings, I’m Zentron, navigator of networks and unraveler of interrelations! Where Yotuda sees stars, I see strings—the web that makes this YouNiverse hum. Shall we begin?
         </p>
     </div>
-    
+
     <h3>The Heatmap: Where Categories Mingle</h3>
     <p>
         <strong>Zentron:</strong> Behold, the heatmap! Not as flashy as a supernova, but it tells a tale just as grand. Each cell here shows how often two categories cozy up to each other. Entertainment and People & Blogs? Oh, they’re the life of the party, connecting everyone like social butterflies at a networking event.
@@ -142,7 +142,7 @@ title: "Unveiling the Secrets Behind YouTube Categories"
     <p>
         <img src="assets/img/heatmap.png" alt="Heatmap showing category overlaps">
     </p>
-    
+
     <h3>The Network Plot: Nodes and Edges</h3>
     <p>
         <strong>Zentron:</strong> Now, let’s connect the dots—literally. Here, categories are nodes, and their co-occurrence is shown as edges. It’s like a map of who’s hanging out with whom in the YouTube cafeteria.
@@ -162,7 +162,7 @@ title: "Unveiling the Secrets Behind YouTube Categories"
     <p>
         <img src="assets/img/conetwork.png" alt="Network plot showing category relationships">
     </p>
-    
+
     <h3>Clustering the Clusters: Louvain’s Method</h3>
     <p>
         <strong>Zentron:</strong> Now for my pièce de résistance—clustering! Louvain’s method groups these nodes into communities, maximizing modularity to show where the strongest bonds lie. Watch as the nodes sort themselves, revealing their social circles.
@@ -182,7 +182,7 @@ title: "Unveiling the Secrets Behind YouTube Categories"
     <p>
         <img src="assets/img/interactive_conetwork.png" alt="Interactive network plot">
     </p>
-    
+
     <h3>Interactive Network: The YouNiverse in Motion</h3>
     <p>
         <strong>Zentron:</strong> Now, try this! With an interactive network, you can zoom, pan, and explore connections yourself. Notice how some links shine brighter, revealing strong ties, while others barely flicker, hinting at weaker overlaps.
@@ -272,7 +272,7 @@ title: "Unveiling the Secrets Behind YouTube Categories"
             <li><code>\log(n)</code> normalizes the score, ensuring comparability across channels with different numbers of categories.</li>
         </ul>
         <p>This metric would yield a higher diversity score for channels that cover unrelated categories across a broad spectrum, while channels with content that overlaps (related categories) would receive a lower diversity score.</p>
-  
+
 <h1>1. Testing the Coherence of the Channel Diversity Metric</h1>
 
 <p>Before applying the Channel Diversity Metric on real-world data, we first want to verify its coherence by testing it on a few example channels. These examples are chosen to represent different types of content diversity, and we expect the metric to rank them accordingly based on the diversity of their categories.</p>
@@ -400,5 +400,64 @@ title: "Unveiling the Secrets Behind YouTube Categories"
 
 <p>We plan to extend this analysis to other key metrics, including viewership, likes, and the number of comments. By examining how these metrics relate to different diversity domains, we aim to gain a more comprehensive understanding of how content diversity impacts not only subscriber growth but also overall engagement and interaction across YouTube channels.</p>
 </section>
+
+<section>
+  <h2>Comparing the Evolution of Channels across Clusters</h2>
+  <p>In this section, we explore how different types of YouTube channels grow over time. Specifically, we’re curious about the differences between entertainment-heavy categories like “Gaming,” “Music,” and “Films” and more educational-focused ones like “Education” and “How-to.” How do their growth patterns compare? Do some categories grow faster or more steadily than others? By diving into their viewership and subscriber trends, we aim to uncover key differences in how channels from these categories evolve.</p>
+
+  <p>Given the massive amount of data involved (millions of records), we needed an efficient way to process and analyze it. Instead of relying on traditional methods like DataFrames, which can get slow with large datasets, we opted for faster, lightweight techniques to handle and transform the data more effectively. This way, we could focus on extracting insights without getting bogged down by performance issues.</p>
+
+  <p>Before jumping into the results, we first calculated how quickly channels grow. Growth rates help us measure how a channel’s audience changes over time—whether that’s in terms of views or subscribers. To calculate the growth rate between two time periods, we use this formula:
+    <math display="block" class="tml-display" style="display:block math;"><mrow><mtext>Growth Rate</mtext><mo form="prefix" stretchy="false">(</mo><mi>%</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mo fence="true" form="prefix">(</mo><mfrac><mrow><mtext>current value</mtext><mo>−</mo><mtext>previous value</mtext></mrow><mtext>previous value</mtext></mfrac><mo fence="true" form="postfix">)</mo></mrow><mo>×</mo><mn>100</mn></mrow></math>
+    This gives us a clear picture of how a channel’s performance evolves over time.</p>
+
+  <p>To make comparisons meaningful, we also needed to align the data for all channels. Since channels are created at different times, their growth data naturally starts at different points. To solve this, we reset the clock for every channel, aligning their timelines so that “week zero” represents the first week of activity. This way, we can compare how channels grow relative to their starting point, no matter when they began.</p>
+
+  <p>Now that we’ve aligned the timelines and calculated growth rates, we can start exploring how channels in different categories evolve over time. Here, we compare the growth patterns of two very different clusters: “Gaming & Music” and “Education & How-to.” The goal is to see whether their trajectories reveal distinct growth dynamics—like sharp spikes, steady trends, or gradual declines—and what this might tell us about the nature of content in these categories. Let’s take a look at how their growth rates play out over the first 50 weeks of their lifecycle.</p>
+
+  <img src="assets/img/growth-evolution-gaming-education.png" alt="Plot 15">
+
+  <p>
+    In the first year of a channel’s life, the differences in growth between these two clusters become strikingly clear. For entertainment-focused channels like those in “Gaming & Music,” growth patterns are full of sharp spikes and sudden drops. These bursts of activity seem to be tied to specific events—perhaps the release of a highly anticipated video or a trend that drives a temporary surge in interest. After these spikes, viewership quickly tapers off, creating a cycle of intense highs and lows.
+  </p>
+
+  <p>
+    This makes sense when you think about the nature of entertainment content. It often thrives on immediate attention, fueled by trending topics or popular culture moments. A video might go viral right after it’s released, but once the trend fades, so does the audience’s interest. Entertainment also tends to cater to a broad but short-lived attention span, which could explain these dramatic variations in growth.
+  </p>
+
+  <p>
+    In contrast, channels in the “Education & How-to” cluster show a much steadier trajectory. Instead of sharp spikes, their growth is more gradual and sustained, with fewer extreme swings in viewership. This likely reflects the evergreen nature of educational content. Tutorials, lessons, and guides often remain useful long after they’re published, drawing in viewers consistently over time. The longer shelf life of this content means it can attract audiences months or even years later, contributing to its steady growth.
+
+    <p>
+      So, while entertainment channels may experience intense but fleeting engagement, education-oriented channels tend to build a slower, more enduring connection with their audience. These patterns highlight the distinct ways creators across different categories grow their channels, shaped by the unique characteristics of their content.
+    </p>
+
+    <p>
+      After looking at how viewership evolves in the early stages of a channel’s life, the next question is: what about subscriber growth? Do the same patterns hold, or does subscriber behavior differ between entertainment and education-focused channels? To explore this, we turn to short-term subscription growth within the first year of a channel’s activity. By comparing the two clusters—“Gaming & Music” and “Education & How-to”—we aim to uncover whether spikes, steady trends, or cyclical behaviors dominate in each. Let’s take a closer look at how these clusters stack up.
+    </p>
+
+    <img src="assets/img/growth-short-term.png" alt="Plot 16">
+
+    <p>
+      When we compare short-term subscription growth between these two clusters, the differences in patterns are striking. For entertainment-focused channels like those in the “Gaming & Music” cluster, growth tends to come in sharp, dramatic spikes. These spikes are likely tied to big moments—like a viral video, a highly anticipated release, or even an external event that drives a sudden wave of attention. But these surges don’t last long; growth quickly stabilizes, or even declines, as the initial buzz fades.
+    </p>
+
+    <p>
+      This pattern makes sense. Viral entertainment content tends to attract a rush of new subscribers who are drawn to the excitement or novelty of the moment. However, after the spike, growth slows down because the core audience for this type of content has already subscribed. If the channel doesn’t follow up with equally engaging content, it’s tough to sustain that momentum.
+    </p>
+
+    <p>
+      In contrast, education-focused channels in the “Education & How-to” cluster show a more consistent and cyclical pattern of growth. Rather than dramatic peaks, they experience smaller but steady increases over time. These channels seem to grow organically, driven by audiences searching for specific knowledge or tutorials. The cyclical nature of their growth might even reflect seasonal trends—like school semesters, exam prep, or periodic content updates that renew interest.
+    </p>
+
+    <p>
+      Interestingly, subscriber growth in this cluster tapers off much more slowly compared to entertainment channels. Educational content often holds long-term value, which helps retain subscribers over time. However, growth can still slow down if newer content from competing channels captures attention, or if the channel experiences periods of inactivity.
+    </p>
+
+    <p>
+      These patterns reveal two very different dynamics: the burst-and-fade growth of entertainment channels versus the steady, value-driven growth of educational ones. Each approach reflects the unique ways these categories engage with their audiences.
+    </p>
+</section>
+
 
 </div>
