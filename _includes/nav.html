@@ -5,17 +5,6 @@
   .navbar-custom.shrink {
     padding: 10px 0;
   }
-  .navbar-custom .nav-item.shrink-bar {
-    border-right: 1px solid #888;
-    margin-right: 10px;
-    transition: all 0.3s ease;
-  }
-  .navbar-custom.shrink .nav-item.shrink-bar {
-    border-right: 1px solid #888;
-    margin-right: 5px;
-    height: 30px; /* Adjust as needed */
-    align-self: center; /* Center the bar vertically */
-  }
   .navbar-brand {
     padding-left: 20px; /* Add padding to move the team name to the right */
     color: white !important; /* Set the team name font color to white */
@@ -35,22 +24,19 @@
 
   <div class="collapse navbar-collapse" id="main-navbar">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link scroll-link" href="#introduction">Introduction</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="sectionsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sections
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sectionsDropdown">
+          <a class="dropdown-item scroll-link" href="#introduction">Introduction</a>
+          <a class="dropdown-item scroll-link" href="#research-questions">Research Questions</a>
+          <a class="dropdown-item scroll-link" href="#data-overview">Data Overview</a>
+          <a class="dropdown-item scroll-link" href="#community-detection-on-categories">Community Detection</a>
+          <a class="dropdown-item scroll-link" href="#metric-design">Metric Design</a>
+          <!-- Add more sections as needed -->
+        </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link scroll-link" href="#research-questions">Research Questions</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link scroll-link" href="#data-overview">Data Overview</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link scroll-link" href="#community-detection-on-categories">Community Detection</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link scroll-link" href="#metric-design">Metric Design</a>
-      </li>
-      <li class="nav-item shrink-bar"></li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="sourcesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Sources

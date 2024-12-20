@@ -50,6 +50,8 @@ url: https://epfl-ada.github.io
 baseurl: /ada-2024-project-grenobelgium
 
 
+navbar-var-length: true
+
 ##########
 # ROBOTS EXCLUDE [optional!]
 #
