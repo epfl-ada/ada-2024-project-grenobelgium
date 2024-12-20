@@ -2,7 +2,9 @@
 layout: default
 title: "Unveiling the Secrets Behind YouTube Categories"
 ---
-
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
 <section id="hero" style="background-image: url('assets/img/background.png'); background-size: cover; background-position: center; padding: 150px 0; text-align: center; color: white; width: 100vw; margin-left: calc(50% - 50vw); margin-top: 0;">
   <h1 style="font-size: 3em; font-weight: bold; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);">Unveiling the Secrets Behind YouTube Categories</h1>
   <p style="font-size: 1.5em; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);">How does content diversity on YouTube influence audience engagement and channel growth?</p>
@@ -206,194 +208,71 @@ title: "Unveiling the Secrets Behind YouTube Categories"
 </section>
 
 <section id="metric-design">
-<h2>Design of a Channel Diversity Metric: A Quantitative Approach to Content Diversity</h2>
+<h2>The Awakening of the Researcher: A Quest for Diversity</h2>
+        <p>After an intense discussion with Yotuda and Zentron about the interwoven dynamics of content diversity across distant galaxies, the EPFL researcher jolted awake, drenched in sweat. His eyes flickered to the clock: the real world was waiting. The dream he had just experienced—a vast cosmic exploration of channels, categories, and their hidden relationships—was, in retrospect, too vivid to ignore. The conversation with Yotuda about entropy and the cryptic mathematical intricacies revealed by Zentron seemed so real that it shook him. He tried to recall the equations, the formulas, and the algorithms that had arisen during those interactions.</p>
 
-<p>We want to evaluate the diversity of a channel based not only on the distribution of categories it publishes but also on the relatedness of those categories. Specifically, a channel that publishes content in categories that rarely co-occur (categories that are less related) should be considered more diverse than one that publishes content in closely related categories.</p>
+        <p>But as the dream began to fade, something extraordinary happened: an epiphany.</p>
 
-<h5>i. Entropy: Measuring Category Distribution</h5>
+        <p>He quickly grabbed a pen and began scribbling. Could these findings actually be translatable into a real-world problem? Could there be a way to measure the diversity of content on a channel—not just by how many different categories a channel covers, but by how related those categories are? Could there be a single metric that balances both spread and relatedness in a quantitative, interpretable way?</p>
 
-<p>The entropy term captures the <strong>spread</strong> of content across different categories in a channel. If a channel focuses on a narrow set of categories, entropy will be low, while a more balanced distribution of content across categories will yield higher entropy. Formally, entropy is calculated as</p>
+        <p>With determination, he began to formalize his thoughts. It was time to bring this dream to life. He would design a Channel Diversity Metric—a unified model that would capture the essence of content diversity in a rigorous mathematical framework.</p>
 
-<p>
-    <math display="block" class="tml-display" style="display:block math;">
-        <mrow>
-          <mi>H</mi>
-          <mo>=</mo>
-          <mo form="prefix" stretchy="false">−</mo>
-          <mrow>
-            <munderover>
-              <mo stretchy="true">∑</mo>
-              <mrow>
-                <mi>i</mi>
-                <mo>=</mo>
-                <mn>1</mn>
-              </mrow>
-              <mi>n</mi>
-            </munderover>
-          </mrow>
-          <msub>
-            <mi>p</mi>
-            <mi>i</mi>
-          </msub>
-          <mrow>
-            <mi>log</mi>
-            <mo>⁡</mo>
-          </mrow>
-          <mo form="prefix" stretchy="false">(</mo>
-          <msub>
-            <mi>p</mi>
-            <mi>i</mi>
-          </msub>
-          <mo form="postfix" stretchy="false">)</mo>
-        </mrow>
-      </math>
-</p>
+        <h3>Designing the Channel Diversity Metric: A Quantitative Approach to Content Diversity</h3>
 
-<p>where <math><msub><mi>p</mi><mi>i</mi></msub></math> is the proportion of content in category <math><mi>i</mi></math> (estimated directly from the channel's category distribution), and <math><mi>n</mi></math> is the total number of unique categories within the channel. A higher value of entropy indicates that the channel is more diverse in terms of the variety of topics it covers.</p>
+        <h5>1. Entropy: A Measure of Category Distribution</h5>
+        <p>The first step in his metric was rooted in an established principle: entropy. Entropy measures the spread of categories on a channel, providing an indication of how diverse the content is. If a channel’s content is focused on a narrow set of categories, the entropy will be low; conversely, a broader distribution across many categories will result in higher entropy.</p>
 
+        <p>The entropy formula is defined as:</p>
+        <p>
+            \[
+            H = - \sum_{i=1}^{n} p_i \cdot \log(p_i)
+            \]
+        </p>
+        <p>Where:</p>
+        <ul>
+            <li><code>p_i</code> represents the proportion of content in category <code>i</code> (estimated directly from the channel’s content distribution).</li>
+            <li><code>n</code> is the total number of unique categories within the channel.</li>
+        </ul>
+        <p>A higher entropy implies that the channel covers a wide variety of topics, while lower entropy suggests a more concentrated focus on a few categories.</p>
 
-<h5>ii. Normalized Mutual Information (NMI): Adjusting for Category Relationships</h5>
+        <h5>2. Normalized Mutual Information (NMI): Adjusting for Category Relationships</h5>
+        <p>But entropy alone didn’t capture the whole story. A channel could cover a range of categories, yet if many of those categories were related (for example, “Gaming” and “Esports”), the channel might seem diverse but actually focus on overlapping themes. To address this, the researcher needed a way to account for the relatedness between categories.</p>
 
-<p>While entropy accounts for the spread of content, it does not capture how the categories are related. Channels that use categories with <strong>high co-occurrence</strong> may appear diverse at first glance, but in reality, they may be focusing on overlapping topics. To account for this, we incorporate <strong>Normalized Mutual Information (NMI)</strong>.</p>
+        <p>Here, the concept of Normalized Mutual Information (NMI) came into play. NMI measures how much information two categories share. If two categories frequently co-occur, their NMI will be high, indicating they are not truly independent. This overlap would reduce the channel's true diversity, so a penalty would be applied.</p>
 
-<p>The NMI between two categories <math><mi>i</mi></math> and <math><mi>j</mi></math> is given by:</p>
+        <p>The formula for NMI between two categories <code>i</code> and <code>j</code> is defined as:</p>
+        <p>
+            \[
+            \text{NMI}(i,j) = \frac{I(i,j)}{\max(H(i), H(j))}
+            \]
+        </p>
+        <p>Where:</p>
+        <ul>
+            <li><code>I(i,j)</code> is the mutual information between categories <code>i</code> and <code>j</code>, calculated as:</li>
+            <p>
+                \[
+                I(i,j) = p_{ij} \cdot \log \left( \frac{p_{ij}}{p_i \cdot p_j} \right)
+                \]
+            </p>
+            <li><code>p_{ij}</code> represents the probability of categories <code>i</code> and <code>j</code> co-occurring across all channels.</li>
+            <li><code>p_i</code> and <code>p_j</code> are the global marginal probabilities for categories <code>i</code> and <code>j</code>, respectively.</li>
+        </ul>
 
-<p>
-    <math display="block" class="tml-display" style="display:block math;">
-        <mrow>
-          <mtext>NMI</mtext>
-          <mo form="prefix" stretchy="false">(</mo>
-          <mi>i</mi>
-          <mo separator="true">,</mo>
-          <mi>j</mi>
-          <mo form="postfix" stretchy="false">)</mo>
-          <mo>=</mo>
-          <mfrac>
-            <mrow>
-              <mi>I</mi>
-              <mo form="prefix" stretchy="false">(</mo>
-              <mi>i</mi>
-              <mo separator="true">,</mo>
-              <mi>j</mi>
-              <mo form="postfix" stretchy="false" lspace="0em" rspace="0em">)</mo>
-            </mrow>
-            <mrow>
-              <mrow>
-                <mi>max</mi>
-                <mo>⁡</mo>
-              </mrow>
-              <mo form="prefix" stretchy="false">(</mo>
-              <mi>H</mi>
-              <mo form="prefix" stretchy="false">(</mo>
-              <mi>i</mi>
-              <mo form="postfix" stretchy="false">)</mo>
-              <mo separator="true">,</mo>
-              <mi>H</mi>
-              <mo form="prefix" stretchy="false">(</mo>
-              <mi>j</mi>
-              <mo form="postfix" stretchy="false">)</mo>
-              <mo form="postfix" stretchy="false" lspace="0em" rspace="0em">)</mo>
-            </mrow>
-          </mfrac>
-        </mrow>
-      </math>
-</p>
-
-<p>where <math>
-    <mrow>
-      <mi>I</mi>
-      <mo form="prefix" stretchy="false">(</mo>
-      <mi>i</mi>
-      <mo separator="true">,</mo>
-      <mi>j</mi>
-      <mo form="postfix" stretchy="false">)</mo>
-    </mrow>
-  </math> is the <strong>mutual information</strong> between categories <math><mi>i</mi></math> and <math><mi>j</mi></math>, and <math>
-    <mrow>
-      <mi>H</mi>
-      <mo form="prefix" stretchy="false">(</mo>
-      <mi>i</mi>
-      <mo form="postfix" stretchy="false">)</mo>
-    </mrow>
-  </math>, <math>
-    <mrow>
-      <mi>H</mi>
-      <mo form="prefix" stretchy="false">(</mo>
-      <mi>j</mi>
-      <mo form="postfix" stretchy="false">)</mo>
-    </mrow>
-  </math> are the individual entropies of the categories. </p>
-
-<p>The mutual information is computed using the global co-occurrence matrix of categories across all channels:</p>
-
-<p>
-    <math display="block" class="tml-display" style="display:block math;">
-        <mrow>
-          <mi>I</mi>
-          <mo form="prefix" stretchy="false">(</mo>
-          <mi>i</mi>
-          <mo separator="true">,</mo>
-          <mi>j</mi>
-          <mo form="postfix" stretchy="false">)</mo>
-          <mo>=</mo>
-          <msub>
-            <mi>p</mi>
-            <mrow>
-              <mi>i</mi>
-              <mi>j</mi>
-            </mrow>
-          </msub>
-          <mrow>
-            <mi>log</mi>
-            <mo>⁡</mo>
-          </mrow>
-          <mrow>
-            <mo fence="true" form="prefix">(</mo>
-            <mfrac>
-              <msub>
-                <mi>p</mi>
-                <mrow>
-                  <mi>i</mi>
-                  <mi>j</mi>
-                </mrow>
-              </msub>
-              <mrow>
-                <msubsup>
-                  <mi>p</mi>
-                  <mi>i</mi>
-                  <mtext>global</mtext>
-                </msubsup>
-                <msubsup>
-                  <mi>p</mi>
-                  <mi>j</mi>
-                  <mtext>global</mtext>
-                </msubsup>
-              </mrow>
-            </mfrac>
-            <mo fence="true" form="postfix">)</mo>
-          </mrow>
-        </mrow>
-      </math>
-</p>
-
-<p>where:
-<ul>
-    <li><math><msub><mi>p</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></math> is the probability of categories <math><mi>i</mi></math> and <math><mi>j</mi></math> co-occurring across all channels, and</li>
-    <li><math><msubsup><mi>p</mi><mi>i</mi><mtext>global</mtext></msubsup></math> and <math><msubsup><mi>p</mi><mi>j</mi><mtext>global</mtext></msubsup></math> are the global marginal probabilities of categories <math><mi>i</mi></math> and <math><mi>j</mi></math>, respectively.</li>
-</ul>
-
-<p>If two categories often co-occur, their NMI will be high, suggesting they are not independent, and thus the diversity score is penalized for such overlap.</p>
-
-<h3>iii. The Full Diversity Metric</h3>
-
-<p>The final <strong>Channel Diversity Metric</strong> is computed as:</p>
-
-<p>
-    <math display="block" class="tml-display" style="display:block math;"><mrow><mtext>Channel Diversity</mtext><mo>=</mo><mfrac><mrow><mo lspace="0em" rspace="0em">−</mo><mo stretchy="true">∑</mo><mo>&lt;</mo><mi>e</mi><mi>m</mi><mo>&gt;</mo><mrow><mi>i</mi><mo>≠</mo><mi>j</mi></mrow><mi>p</mi><mo>&lt;</mo><mi>/</mi><mi>e</mi><mi>m</mi><mo>&gt;</mo><mi>i</mi><mrow><mspace width="0.1667em"></mspace><mi>log</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>p</mi><mi>i</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>⋅</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mtext>NMI</mtext><mo form="prefix" stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false" lspace="0em" rspace="0em">)</mo></mrow><mrow><mrow><mi>log</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>n</mi><mo form="postfix" stretchy="false" lspace="0em" rspace="0em">)</mo></mrow></mfrac></mrow></math>
-</p>
-
-<p>This formula combines the entropy term, which encourages a broad distribution of categories, with the NMI adjustment, which penalizes the use of highly related categories. The division by $(log(n))$ normalizes the score, ensuring comparability across channels with different numbers of categories.</p>
-
+        <h5>3. The Full Channel Diversity Metric</h5>
+        <p>With entropy capturing the spread of content and NMI adjusting for category relatedness, the researcher now needed to combine these elements into a single metric. The final Channel Diversity Metric would capture both the distribution of content across categories and the relationships between categories. The formula becomes:</p>
+        <p>
+            \[
+            \text{Channel Diversity} = - \sum_{i=1}^{n} p_i \cdot \log(p_i) \cdot \left( 1 - \text{NMI}(i,j) \right) / \log(n)
+            \]
+        </p>
+        <p>Where:</p>
+        <ul>
+            <li><code>p_i</code> represents the proportion of content in category <code>i</code>.</li>
+            <li><code>1 - \text{NMI}(i,j)</code> penalizes the contribution of related categories.</li>
+            <li><code>\log(n)</code> normalizes the score, ensuring comparability across channels with different numbers of categories.</li>
+        </ul>
+        <p>This metric would yield a higher diversity score for channels that cover unrelated categories across a broad spectrum, while channels with content that overlaps (related categories) would receive a lower diversity score.</p>
+  
 <h1>1. Testing the Coherence of the Channel Diversity Metric</h1>
 
 <p>Before applying the Channel Diversity Metric on real-world data, we first want to verify its coherence by testing it on a few example channels. These examples are chosen to represent different types of content diversity, and we expect the metric to rank them accordingly based on the diversity of their categories.</p>
