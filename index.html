@@ -273,19 +273,21 @@ title: "Unveiling the Secrets Behind YouTube Categories"
         </ul>
         <p>This metric would yield a higher diversity score for channels that cover unrelated categories across a broad spectrum, while channels with content that overlaps (related categories) would receive a lower diversity score.</p>
   
-<h1>Testing the Metric: Validating the Concept</h1>
+<h1>1. Testing the Coherence of the Channel Diversity Metric</h1>
 
-<p>To ensure the metric was working as expected, the researcher tested it on a set of example channels representing different types of content diversity:</p>
+<p>Before applying the Channel Diversity Metric on real-world data, we first want to verify its coherence by testing it on a few example channels. These examples are chosen to represent different types of content diversity, and we expect the metric to rank them accordingly based on the diversity of their categories.</p>
 
-<ul>
-    <li><strong>Diverse-independent</strong>: Channels with a broad range of unrelated topics (e.g., "Science," "History," "Travel").</li>
-    <li><strong>Diverse-related</strong>: Channels with multiple topics, but with some overlap (e.g., "Technology" and "Gaming").</li>
-    <li><strong>Gaming-focused</strong>: Channels centered around a specific category like "Gaming," with minimal deviation.</li>
-    <li><strong>Comedy-only</strong>: Channels focusing exclusively on one category, like "Comedy."</li>
-</ul>
+<p>The example channels are :
+<strong>Gaming-focused</strong>, <strong>Diverse-related</strong>, <strong>Diverse-independent</strong> and <strong>Comedy-only</strong></p>
 
-<p>The expected diversity scores were as follows:</p>
+<p>The expected ranking of the channels in terms of diversity is:</p>
 
+<ol>
+<li><strong>Diverse-independent</strong>: Highest diversity (varied, unrelated categories).</li>
+<li><strong>Diverse-related</strong>: Moderate diversity (some overlap between categories).</li>
+<li><strong>Gaming-focused</strong>: Lower diversity (dominant "Gaming" category with some overlap).</li>
+<li><strong>Comedy-only</strong>: Lowest diversity (single category).</li>
+</ol>
 <div class="table-container">
     <table>
         <thead>
@@ -317,48 +319,82 @@ title: "Unveiling the Secrets Behind YouTube Categories"
 
 <p><strong>The results seem to be coherent with our expectations. Nice!</strong></p>
 
-<h1>Applying the Metric to Real-World Data</h1>
+<h1>2. Application on real channel data</h1>
+        <img src="assets/img/Distribution_channel_density.png" alt=""Plot11">
+<p>From the histogram of channel frequencies and their corresponding diversity scores, we observe that several potential generative laws could explain the observed distribution. The distribution could follow one of the following forms:</p>
 
-<img src="assets/img/Distribution_channel_density.png" alt="Distribution of Channel Density">
-
-<p>The researcher now turned to real-world YouTube channels. After applying the metric to a large dataset, he observed a wide range of diversity scores. He suspected that these scores followed a Beta distribution, a common pattern for datasets where values tend to cluster at the extremes (low and high diversity).</p>
-
-<p>The Beta distribution has the form:</p>
+<ol>
+<li><p><strong>Exponential Distribution</strong>: The probability density function (PDF) is given by:</p>
 
 <p>
-    <math display="block">
-        f(x | α, β) = \frac{x^{α - 1}(1 - x)^{β - 1}}{B(α, β)}, \quad 0 \leq x \leq 1
-    </math>
+    <math display="block" class="tml-display" style="display:block math;"><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>|</mi><mi>λ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>λ</mi><msup><mi>e</mi><mrow><mo lspace="0em" rspace="0em">−</mo><mi>λ</mi><mi>x</mi></mrow></msup><mo separator="true">,</mo><mspace width="1em"></mspace><mi>x</mi><mo>≥</mo><mn>0</mn></mrow></math>
+</p></li>
+<li><p><strong>Truncated Normal Distribution</strong>: A normal distribution restricted to a specific range, typically used when data is confined within certain bounds. The truncated normal PDF is:</p>
+
+<p>
+    <math display="block" class="tml-display" style="display:block math;"><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>|</mi><mi>μ</mi><mo separator="true">,</mo><mi>σ</mi><mo separator="true">,</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>ϕ</mi><mrow><mo fence="true" form="prefix">(</mo><mfrac><mrow><mi>x</mi><mo>−</mo><mi>μ</mi></mrow><mi>σ</mi></mfrac><mo fence="true" form="postfix">)</mo></mrow></mrow><mrow><mi>σ</mi><mo form="prefix" stretchy="false">[</mo><mrow><mi mathvariant="normal">Φ</mi></mrow><mrow><mo fence="true" form="prefix">(</mo><mfrac><mrow><mi>b</mi><mo>−</mo><mi>μ</mi></mrow><mi>σ</mi></mfrac><mo fence="true" form="postfix">)</mo></mrow><mo>−</mo><mrow><mi mathvariant="normal">Φ</mi></mrow><mrow><mo fence="true" form="prefix">(</mo><mfrac><mrow><mi>a</mi><mo>−</mo><mi>μ</mi></mrow><mi>σ</mi></mfrac><mo fence="true" form="postfix">)</mo></mrow><mo form="postfix" stretchy="false" lspace="0em" rspace="0em">]</mo></mrow></mfrac><mo separator="true">,</mo><mspace width="1em"></mspace><mi>a</mi><mo>≤</mo><mi>x</mi><mo>≤</mo><mi>b</mi></mrow></math>
 </p>
 
-<p>Where \( \alpha \) and \( \beta \) are parameters that control the shape of the distribution. The researcher used Q-Q plots to compare the empirical data with theoretical distributions. Through these plots, he confirmed that the Beta distribution provided the best fit for the channel diversity scores.</p>
+<p>where $\phi$ is the standard normal PDF and $\Phi$ is the cumulative distribution function (CDF).</p></li>
+<li><p><strong>Gamma Distribution</strong>:</p>
 
-<p><strong>Insight:</strong> Most channels tend to focus on a narrow range of topics, leading to low diversity scores. Only a few channels adopt a truly diverse set of categories, explaining the long tail in the distribution.</p>
+<p>
+    <math display="block" class="tml-display" style="display:block math;"><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>|</mi><mi>α</mi><mo separator="true">,</mo><mi>β</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mrow><msup><mi>x</mi><mrow><mi>α</mi><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>e</mi><mrow><mo lspace="0em" rspace="0em">−</mo><mi>x</mi><mi>/</mi><mi>β</mi></mrow></msup></mrow><mrow><msup><mi>β</mi><mi>α</mi></msup><mrow><mi mathvariant="normal">Γ</mi></mrow><mo form="prefix" stretchy="false">(</mo><mi>α</mi><mo form="postfix" stretchy="false" lspace="0em" rspace="0em">)</mo></mrow></mfrac><mo separator="true">,</mo><mspace width="1em"></mspace><mi>x</mi><mo>≥</mo><mn>0</mn></mrow></math>
+</p></li>
+<li><p><strong>Beta Distribution</strong>:</p>
 
-<h2>Exploring the Optimal Diversity Domain: Linking Diversity to Success</h2>
+<p>
+    <math display="block" class="tml-display" style="display:block math;"><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>|</mi><mi>α</mi><mo separator="true">,</mo><mi>β</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mrow><msup><mi>x</mi><mrow><mi>α</mi><mo>−</mo><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>x</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>β</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><mrow><mi>B</mi><mo form="prefix" stretchy="false">(</mo><mi>α</mi><mo separator="true">,</mo><mi>β</mi><mo form="postfix" stretchy="false" lspace="0em" rspace="0em">)</mo></mrow></mfrac><mo separator="true">,</mo><mspace width="1em"></mspace><mn>0</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>1</mn></mrow></math>
+</p></li>
+</ol>
 
-<p>Finally, the researcher turned his attention to the relationship between channel diversity and success. He hypothesized that there might be an optimal level of diversity for attracting a large subscriber base.</p>
+<p>To determine which of these distributions is most plausible for our diversity score data, we proceed by analyzing their goodness of fit. The first step in this process is to visualize the data against the theoretical distribution using a <strong>Quantile-Quantile (QQ) plot</strong>: A QQ plot compares the quantiles of the empirical data against the quantiles of a given theoretical distribution. If the data follows the proposed distribution, the points in the QQ plot will lie approximately on a straight line.</p>
+        <img src="assets/img/4 graph.png" alt=""Plot12">
+<p>Upon examining the Q-Q plots for each candidate distribution, it becomes evident that the gamma and beta distributions are the most plausible candidates for the true generative model. This observation highlights the limitations of relying solely on visual inspection to determine a sample's underlying distribution. While initial examination of distribution plots suggested that the exponential and truncated normal distributions were strong contenders, the Q-Q plots reveal significant deviations, indicating that these distributions are less likely to fit the data accurately.</p>
 
-<p>To investigate this, he divided the diversity scores into three categories: low, moderate, and high diversity. These categories were determined using quantiles derived from the Beta distribution, ensuring a balanced representation across channels.</p>
+<p>To further solidify our conclusions, we will now compute both the log-likelihood and the mean squared error (MSE) of the Q-Q plots. These quantitative measures will help us determine, with greater confidence, which distribution best fits the observed data.</p>
+        <img src="assets/img/comparaison_of_distribution_fit.png" alt=""Plot13">
+<p>The fact that YouTube channel diversity scores follow a Beta distribution implies that most channels tend to focus on a narrow set of categories, resulting in low diversity scores. This indicates that many creators prefer specialized content strategies, sticking to a limited range of topics. The flexibility of the Beta distribution also suggests that while some channels embrace broader content diversity, the majority operate within a more restrictive set of categories, reflecting strategic choices for niche targeting or audience consistency.</p>
 
-<p>Next, he analyzed whether different diversity levels correlated with higher subscriber counts. The analysis showed that moderate diversity channels consistently outperformed others in terms of subscribers. Channels that were neither too niche nor too broad in their content tended to attract the largest and most engaged audiences.</p>
+<p>By identifying the true generative law, we can make afterwards more accurate predictions about a channel's future diversity scores. This understanding enables us to model the relationship between content strategy and diversity, allowing for better forecasting of how changes in content focus might impact a channel's diversity over time. It also provides a foundation for identifying trends and anomalies in content categorization across different channels.</p>
 
-<h3>Key Findings:</h3>
+<h2>3. Inspecting optimal diversity domains</h2>
+
+<p>In order to explore the relationship between channel diversity and success, we aim to divide the diversity domain into three distinct categories: <strong>low, moderate, and high diversity</strong>. This approach will help us identify whether certain levels of content diversity are correlated with greater <strong>channel success</strong>. To ensure that our findings are <strong>not overly reliant on specific data subsets</strong> and can be generalized across different types of channels, we will use the theoretical quantiles of the Beta distribution to define these categories. By leveraging these quantiles, we can create <strong>well-balanced groups</strong> based on the natural spread of the diversity scores, ensuring statistical rigor and minimizing any bias that might arise from arbitrary cutoffs.</p>
+
+<p>Furthermore, by constructing balanced domains, we can ensure that each category has an adequate representation of channels, which will allow us to draw meaningful, statistically significant conclusions about how diversity levels affect channel success. This method helps avoid overfitting to specific trends in the data, leading to more robust, generalizable insights.</p>
+
+<p><strong>i. Example</strong></p>
+
+<p>We begin by dividing the diversity domain into three categories using q1=0.1 and q2=0.6, ensuring a balanced distribution across categories. Next, we will examine whether these diversity categories have an impact on subscriber count.</p>
+        <img src="assets/img/comparison_of_suscribers.png" alt=""Plot13">
+<p>From the initial plot, it appears that there is a significant difference in the number of subscribers across the three diversity categories. However, as emphasized earlier, <strong>visual inspection alone is not sufficient to draw reliable conclusions</strong>. To rigorously support our claim, we will apply non-parametric statistical tests to assess whether the observed differences are statistically significant.</p>
+
+<p>To test for differences between the three diversity categories, we will use the <strong>Kruskal-Wallis test</strong>. This test is appropriate because it does not assume a normal distribution of the data and can compare more than two groups. The null hypothesis for this test is that all groups have the same distribution, while the alternative hypothesis is that at least one group differs significantly from the others.</p>
+
+<p>We will proceed with pairwise comparisons using the <strong>Mann-Whitney U test</strong>. This test will allow us to compare each pair of diversity categories to identify which specific groups differ from each other. The Mann-Whitney U test is a non-parametric test that compares the ranks of two independent groups, with the null hypothesis being that the two groups come from the same distribution.</p>
+
+<p><strong>ii. Identifying the Optimal Diversity Region</strong></p>
+
+<p>Now that we have established statistical significance regarding the differences in subscription distributions across the three diversity categories, we aim to identify the optimal diversity region for channel success. To do this, we will perform a grid search across different quantile values for q1 and q2, which define the boundaries of the diversity categories.</p>
+
+<p>The grid search will be constrained by the requirement to maintain fairly balanced categories. Specifically:</p>
 
 <ul>
-    <li><strong>Low Diversity:</strong> Channels with a narrow focus often struggle to attract a wide audience.</li>
-    <li><strong>Moderate Diversity:</strong> Channels that strike a balance between focus and variety attract the most subscribers.</li>
-    <li><strong>High Diversity:</strong> Channels attempting to cover too many unrelated topics often fail to build a strong, engaged community.</li>
+<li>When q1 = 0 or q2 = 1, we will limit the search to two categories, ensuring they are balanced (dividing the diversity domain into a low and high diversity category).</li>
+<li>Otherwise, for intermediate values of q1 and q2, we will examine three balanced categories, each representing a distinct diversity level (low, moderate, and high).</li>
 </ul>
+        <img src="assets/img/grid search.png" alt=""Plot14">
+<p>From our analysis, it appears that the optimal domain for maximizing subscription counts lies within the moderate diversity category, defined by the quantile values 𝑞1=0.05 and 𝑞2=0.6. This domain seems to strike a balance between channels that focus too narrowly on a small set of categories (low diversity) and those that attempt to cover too many topics (high diversity).</p>
 
-<p>Through non-parametric statistical tests, the researcher confirmed that moderate diversity was statistically linked to greater success, particularly in terms of subscriber growth.</p>
+<p>Channels within this moderate diversity range likely benefit from a combination of the following factors:</p>
 
-<h1>Conclusions</h1>
-
-<p>The researcher sat back, deep in thought. His dream had led him to create a rigorous, quantitative metric for channel diversity, one that combined entropy and mutual information to reflect both the spread of content and the relatedness between categories. Through testing and analysis, he had demonstrated that a moderate level of content diversity was most effective for growing a channel’s audience.</p>
-
-<p>Was this insight the result of his subconscious mind processing years of research? Or had the dream truly unlocked something more profound about the nature of content creation and its relationship to audience growth? As he continued his work, one thing was certain: the boundary between dreams and reality had never seemed so thin.</p>
-
+<ul>
+<li><p>Targeted Content Strategy: Channels that operate within this domain may be focusing on a <strong>broad but still manageable range of topics</strong>. They are not too specialized to limit their audience, nor are they too generalized to lose focus. This balance may help attract a more consistent and engaged subscriber base.</p></li>
+<li><p>Audience Engagement: Channels that span a moderate number of categories can cater to a variety of viewer interests, leading to increased engagement. At the same time, they avoid spreading themselves too thin across unrelated topics, which could dilute the channel's identity and cause audience fragmentation.</p></li>
+<li><p>Content Differentiation: By staying within the moderate diversity range, these channels are likely to stand out in niche areas without competing with the most generalized or overly specific content. This positioning could lead to higher discoverability and a greater likelihood of attracting subscribers who are interested in a curated but diverse set of topics.</p></li>
+<li><p>Statistical Support: The significant differences in subscription counts observed within this moderate diversity range, as confirmed by statistical tests, suggest that the choice of content breadth within this domain positively influences channel growth. This is likely due to the fact that it aligns with a larger, more engaged audience while still maintaining a distinct channel identity.</p></li>
+</ul>
 </section>
 
 </div>
