@@ -14,9 +14,9 @@ title: "Unveiling the Secrets Behind YouTube Categories"
   <h2>Introduction</h2>
   <p>Every YouTuber, at some point, faces a big question: should they stick to what they're good at or try something new? With over 2.7 billion users and 500 hours of video uploaded every minute, it's not an easy choice. The competition is massive, and whether you focus on one niche or branch out into different types of content can completely change how your channel grows, how well you connect with your audience, and how far you go.
 
-  <p>That's what this project is all about—figuring out the trade-off between sticking to a niche and mixing it up. We're diving into the YouNiverse dataset, which has over 136,000 channels and 72 million videos, to uncover patterns and insights that can help creators make smarter choices about their content strategy.</p>
+  <p>The goal of this project is to figure out this trade-off between sticking to a niche and mixing it up. We're looking at the YouNiverse dataset, which comprises over 136,000 channels and 72 million videos, to uncover patterns and insights that can help creators make smarter choices about their content strategy.</p>
 
-  <p>To keep things simple, we're looking at established channels with at least 10,000 subscribers. The idea is to see how different approaches to content—whether super focused or more diverse—tie into success, from growing subscribers to keeping audiences engaged. Let's see what the data can tell us.</p>
+  <p>To keep things simple, we focus on established channels with at least 10,000 subscribers. The idea is to see how different degrees of content diversity within a channel tie into success, from growing subscribers to keeping audiences engaged. But to really understand this, we need to break it down into key questions to guide our analysis.</p>
 </section>
 
 <section id="research-questions">
@@ -35,15 +35,17 @@ title: "Unveiling the Secrets Behind YouTube Categories"
 
 <section id="data-overview">
   <h2>Data Overview</h2>
-  <p>The YouNiverse dataset contains over 136,000 English-language YouTube channels and more than 72 million videos. We focuse on channels with more than 10,000 subscribers and at least 10 videos. This allows us to capture established creators and avoid noise from very small channels. At the same time, however, it is important to acknowledge the possibility that we thereby introduce a bias by excluding smaller channels whose growth trajectories might differ.</br>
-  With this in mind, let us have a look at the distribution of channels and subscribers across categories.</p>
-  <p style="color: red;">TODO: change into pie charts. Plotly for some interactivity?</p>
-  <iframe src="assets/plots/category_distribution.html" width="100%" height="800px" frameborder="0"></iframe>
-  <img src="assets/img/subscribers-across-categories.png" alt="Plot 3">
-  </p>As we can see, the distribution of YouTube channels across categories is heavily dominated by Music, Entertainment, Gaming, and People & Blogs which together make up approximately 63% of all channels. These four big players are followed by a range of other categories having a large number of creators actively contributing to them. On the other end of the spectrum, more niche categories, such as Nonprofits & Activism and Pets & Animals, have far fewer channels, telling us that their appeal is much more specialized.
+  <p>The YouNiverse dataset is massive—over 136,000 English-language YouTube channels and more than 72 million videos. To keep things focused, we zero in on channels with more than 10,000 subscribers and at least 10 videos. This lets us look at creators who are already somewhat established while filtering out noise from smaller channels that might not have enough data to draw meaningful insights.</p>
+  <p>Of course, this comes with a trade-off. By excluding smaller channels, we might be overlooking different growth patterns or strategies that newer creators use to get started. It's worth keeping this in mind as we explore the data.</p>
+  <p>With that said, let's take a closer look at how channels and subscribers are distributed across different categories.</p>
 
-When we look at the distribution of subscription volume across these categories, a similar trend appears, but with a few key differences. While the same four dominant categories together account for roughly 66% of subscriptions, Entertainment takes over in subscriber share. Categories like Education and Sports have a significant number of channels but a smaller share of subscribers, which could indicate more competition, i.e., a fragmented viewership. </p>
- </p>Let's take a look the average number of videos per channel for each category to understand content creation patterns. </p>
+<iframe src="assets/plots/category_distribution.html" width="100%" height="800px" frameborder="0" style="display:block; margin-bottom:-150px;"></iframe>
+<iframe src="assets/plots/subscribers_distribution.html" width="100%" height="800px" frameborder="0" style="display:block; margin-bottom:-175px;"></iframe>
+
+  </p>As we can see, a few categories dominate the YouTube landscape. Music, Entertainment, Gaming, and People & Blogs make up an impressive 63% of all channels, standing out as the big players. Behind them, we see a range of other categories with plenty of active creators. But on the other hand, there are the niche categories like Nonprofits & Activism and Pets & Animals, which have far fewer channels, showing their more specialized appeal.
+
+  When we shift our focus to subscriber volume, the story stays similar but with a few twists. Those same four dominant categories claim an even larger slice of the pie—about 66% of all subscriptions—with Entertainment leading the charge. Interestingly, categories like Education and Sports show a different pattern. They have a solid number of channels but a much smaller share of subscribers, suggesting that their audiences might be more spread out, creating tougher competition for attention.</p>
+ </p>Let's take a look the average number of videos per channel for each category to understand content creation patterns.</p>
 
   <img src="assets/img/avg-number-videoes-per-category.png" alt="Plot 4">
    </p>News & Politics channels have the highest number of videos per channel by far, publishing numerous videos each day to cover global events.
@@ -446,6 +448,6 @@ However, we lack sufficient data between 2015 and the end of 2016, which prevent
 <p><strong>Remark</strong></p>
 
 <p>We plan to extend this analysis to other key metrics, including viewership, likes, and the number of comments. By examining how these metrics relate to different diversity domains, we aim to gain a more comprehensive understanding of how content diversity impacts not only subscriber growth but also overall engagement and interaction across YouTube channels.</p>
-
+</section>
 
 </div>
