@@ -275,9 +275,9 @@ title: "Unveiling the Secrets Behind YouTube Categories"
 
 <h1>1. Testing the Coherence of the Channel Diversity Metric</h1>
 
-<p>Before applying the Channel Diversity Metric on real-world data, we first want to verify its coherence by testing it on a few example channels. These examples are chosen to represent different types of content diversity, and we expect the metric to rank them accordingly based on the diversity of their categories.</p>
+<p>Before applying the Channel Diversity Metric on real-world data, the researcher wanted to validate it using a set of example channels. These channels varied in the diversity of their content:</p>
 
-<p>The example channels are :
+<p>
 <strong>Gaming-focused</strong>, <strong>Diverse-related</strong>, <strong>Diverse-independent</strong> and <strong>Comedy-only</strong></p>
 
 <p>The expected ranking of the channels in terms of diversity is:</p>
@@ -317,11 +317,13 @@ title: "Unveiling the Secrets Behind YouTube Categories"
     </table>
 </div>
 
-<p><strong>The results seem to be coherent with our expectations. Nice!</strong></p>
+<p><strong>These results aligned with the researcher’s expectations: channels with unrelated, diverse categories scored the highest, while channels focused on a single category (such as Comedy-only) received the lowest diversity score.</strong></p>
 
 <h1>2. Application on real channel data</h1>
         <img src="assets/img/Distribution_channel_density.png" alt=""Plot11">
-<p>From the histogram of channel frequencies and their corresponding diversity scores, we observe that several potential generative laws could explain the observed distribution. The distribution could follow one of the following forms:</p>
+
+<p>Encouraged by these results, the researcher now applied the Channel Diversity Metric to a real-world dataset of YouTube channels. He sought to understand the distribution of diversity scores across channels.<\p>
+<p>From the histogram of channel frequencies and their corresponding diversity scores, he observes that several potential generative laws could explain the observed distribution. The distribution could follow one of the following forms:</p>
 
 <ol>
 <li><p><strong>Exponential Distribution</strong>: The probability density function (PDF) is given by:</p>
@@ -348,15 +350,15 @@ title: "Unveiling the Secrets Behind YouTube Categories"
 </p></li>
 </ol>
 
-<p>To determine which of these distributions is most plausible for our diversity score data, we proceed by analyzing their goodness of fit. The first step in this process is to visualize the data against the theoretical distribution using a <strong>Quantile-Quantile (QQ) plot</strong>: A QQ plot compares the quantiles of the empirical data against the quantiles of a given theoretical distribution. If the data follows the proposed distribution, the points in the QQ plot will lie approximately on a straight line.</p>
+<p>To determine which of these distributions is most plausible for his diversity score data, he proceeds by analyzing their goodness of fit. The first step in this process is to visualize the data against the theoretical distribution using a <strong>Quantile-Quantile (QQ) plot</strong>: A QQ plot compares the quantiles of the empirical data against the quantiles of a given theoretical distribution. If the data follows the proposed distribution, the points in the QQ plot will lie approximately on a straight line.</p>
         <img src="assets/img/4 graph.png" alt=""Plot12">
-<p>Upon examining the Q-Q plots for each candidate distribution, it becomes evident that the gamma and beta distributions are the most plausible candidates for the true generative model. This observation highlights the limitations of relying solely on visual inspection to determine a sample's underlying distribution. While initial examination of distribution plots suggested that the exponential and truncated normal distributions were strong contenders, the Q-Q plots reveal significant deviations, indicating that these distributions are less likely to fit the data accurately.</p>
+<p>Upon examining the Q-Q plots for each candidate distribution, it becomes evident that the gamma and beta distributions are the most plausible candidates for the true generative model. </p>
 
-<p>To further solidify our conclusions, we will now compute both the log-likelihood and the mean squared error (MSE) of the Q-Q plots. These quantitative measures will help us determine, with greater confidence, which distribution best fits the observed data.</p>
+<p>To further substantiate his findings, the researcher computed the log-likelihood and mean squared error (MSE) for each distribution.</p>
         <img src="assets/img/comparaison_of_distribution_fit.png" alt=""Plot13">
-<p>The fact that YouTube channel diversity scores follow a Beta distribution implies that most channels tend to focus on a narrow set of categories, resulting in low diversity scores. This indicates that many creators prefer specialized content strategies, sticking to a limited range of topics. The flexibility of the Beta distribution also suggests that while some channels embrace broader content diversity, the majority operate within a more restrictive set of categories, reflecting strategic choices for niche targeting or audience consistency.</p>
+<p>With these statistical measures, the researcher was confident that the Beta distribution best explained the distribution of channel diversity scores.<\p>
 
-<p>By identifying the true generative law, we can make afterwards more accurate predictions about a channel's future diversity scores. This understanding enables us to model the relationship between content strategy and diversity, allowing for better forecasting of how changes in content focus might impact a channel's diversity over time. It also provides a foundation for identifying trends and anomalies in content categorization across different channels.</p>
+<p>He then concludes that YouTube channel diversity scores following a Beta distribution implies that most channels tend to focus on a narrow set of categories, resulting in low diversity scores. This indicates that many creators prefer specialized content strategies, sticking to a limited range of topics. The flexibility of the Beta distribution also suggests that while some channels embrace broader content diversity, the majority operate within a more restrictive set of categories, reflecting strategic choices for niche targeting or audience consistency.</p>
 
 <h2>3. Inspecting optimal diversity domains</h2>
 
