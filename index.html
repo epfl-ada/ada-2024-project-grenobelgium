@@ -31,12 +31,12 @@ title: "Unveiling the Secrets Behind YouTube Categories"
     <li>Are there any relationships between categories?</li>
     <li>Which combination of categories is most effective for audience growth?</li>
     <li>Is it possible to predict the categorical cluster of a channel giving timeseries data?</li>
-  </ol>
+  </ol>        
 </section>
 
 
 <section id="data-overview">
-  <h2>Data Overview</h2>
+<h2>Data Story</h2>
   <div>
     <p><strong>[Scene: The YouNiverse Observatory, a dome of glowing charts and buzzing datapads. Yotuda, the wise sage of data, stands at the center, cloaked in holographic light. The apprentice enters, looking both curious and mildly overwhelmed.]</strong></p>
 
@@ -66,10 +66,10 @@ title: "Unveiling the Secrets Behind YouTube Categories"
   <div>
     <h3>Content Creation Patterns</h3>
     <p>[The holograms shift to show bar charts labeled “Videos Per Channel” and “Total Videos Per Category.”]</p>
+    <iframe src="assets/plots/avg_number_videos_cateogires.html" width="100%" height="667px" frameborder="0" style="display:block; margin-bottom:-50px;"></iframe>
 
     <p><strong>Yotuda:</strong> And now, the rhythm of creation. News & Politics—unstoppable. The most videos per channel by far. Why? To cover global events, they must be relentless. No time for cat videos when there’s a summit in progress.</p>
 
-    <iframe src="assets/plots/avg_number_videos_cateogires.html" width="100%" height="667px" frameborder="0" style="display:block; margin-bottom:-50px;"></iframe>
     <p>News & Politics channels have the highest number of videos per channel by far, publishing numerous videos each day to cover global events.</p>
 
     <iframe src="assets/plots/total_number_videos_categories.html" width="100%" height="667px" frameborder="0" style="display:block; margin-bottom:-50px;"></iframe>
@@ -102,7 +102,7 @@ title: "Unveiling the Secrets Behind YouTube Categories"
 
     <iframe src="assets/plots/total_monthly_subscriber_by_category.html" width="100%" height="667px" frameborder="0" style="display:block; margin-bottom:-50px;"></iframe>
     <iframe src="assets/plots/total_monthly_view_per_category.html" width="100%" height="667px" frameborder="0" style="display:block; margin-bottom:-50px;"></iframe>
-    <p><strong>Yotuda:</strong> Patterns emerge. Cycles of activity tied to seasons and holidays. Winter, when the world retreats indoors, and subscribers grow. March 2023—Music sees a spike. A viral artist, perhaps? Yet, beware the gaps. Missing data from 2015 to 2016 veils parts of the story.</p>
+    <p><strong>Yotuda:</strong> Patterns emerge. Cycles of activity tied to seasons and holidays. Winter, when the world retreats indoors, and subscribers grow. March 2018—Music sees a spike. A viral artist, perhaps? Yet, beware the gaps. Missing data from 2015 to 2016 veils parts of the story.</p>
   </div>
 
   <div>
@@ -131,7 +131,11 @@ title: "Unveiling the Secrets Behind YouTube Categories"
     </div>
 
     <h3>The Heatmap: Where Categories Mingle</h3>
+    
     <p>
+        <img src="assets/img/heatmap.png" alt="Heatmap showing category overlaps">
+    </p>
+<p>
         <strong>Zentron:</strong> Behold, the heatmap! Not as flashy as a supernova, but it tells a tale just as grand. Each cell here shows how often two categories cozy up to each other. Entertainment and People & Blogs? Oh, they’re the life of the party, connecting everyone like social butterflies at a networking event.
     </p>
     <p>
@@ -140,11 +144,12 @@ title: "Unveiling the Secrets Behind YouTube Categories"
     <p>
         <strong>Zentron:</strong> Exactly! Strong overlaps here suggest they’re the backbone of YouTube’s creative chaos. They often borrow from each other—think gamers vibing to epic soundtracks or animators tossing in hilarious comedy skits.
     </p>
-    <p>
-        <img src="assets/img/heatmap.png" alt="Heatmap showing category overlaps">
-    </p>
 
     <h3>The Network Plot: Nodes and Edges</h3>
+          
+    <p>
+        <img src="assets/img/conetwork.png" alt="Network plot showing category relationships">
+    </p>
     <p>
         <strong>Zentron:</strong> Now, let’s connect the dots—literally. Here, categories are nodes, and their co-occurrence is shown as edges. It’s like a map of who’s hanging out with whom in the YouTube cafeteria.
     </p>
@@ -160,9 +165,6 @@ title: "Unveiling the Secrets Behind YouTube Categories"
     <p>
         <strong>Zentron:</strong> A match made in intellectual heaven. Tutorials meet lifestyle hacks—because who doesn’t want to learn how to bake sourdough and dress like a Parisian?
     </p>
-    <p>
-        <img src="assets/img/conetwork.png" alt="Network plot showing category relationships">
-    </p>
 
     <h3>Clustering the Clusters: Louvain’s Method</h3>
     <p>
@@ -170,6 +172,10 @@ title: "Unveiling the Secrets Behind YouTube Categories"
     </p>
     <p>
         <em>[The apprentice watches as clusters of categories emerge.]</em>
+    </p>
+
+    <p>
+        <img src="assets/img/interractive_conetwork.png" alt="Interactive network plot">
     </p>
     <p>
         <strong>Zentron:</strong> Look at this! Gaming, Music, Comedy, and Film & Animation form one big, happy family. Meanwhile, Education and Howto & Style carve out their intellectual niche. Sports and News & Politics stand as lone wolves—specialized, yes, but less likely to cross paths with the broader crowd.
@@ -180,33 +186,6 @@ title: "Unveiling the Secrets Behind YouTube Categories"
     <p>
         <strong>Zentron:</strong> Ah, sharp eye. Louvain isn’t perfect. Isolated categories sometimes get lumped into larger clusters, even if they don’t quite fit. It’s like sticking a quiet poet in a room full of jazz musicians—they might find a rhythm, but it’s not a perfect match.
     </p>
-    <p>
-        <img src="assets/img/interractive_conetwork.png" alt="Interactive network plot">
-    </p>
-
-    <h3>Interactive Network: The YouNiverse in Motion</h3>
-    <p>
-        <strong>Zentron:</strong> Now, try this! With an interactive network, you can zoom, pan, and explore connections yourself. Notice how some links shine brighter, revealing strong ties, while others barely flicker, hinting at weaker overlaps.
-    </p>
-    <p>
-        <em>[The apprentice clicks on nodes, marveling at the dynamic connections.]</em>
-    </p>
-    <p>
-        <strong>Zentron:</strong> A word of caution: no algorithm captures everything. Some isolated categories remain stubbornly enigmatic, defying easy classification. To refine this, we might need a different approach—perhaps algorithms that value uniqueness over connection density.
-    </p>
-    <p>
-        <strong>Apprentice:</strong> It’s incredible. These clusters feel alive, almost like they’re telling their own stories.
-    </p>
-    <p>
-        <strong>Zentron:</strong> That’s the magic of networks—they reveal the hidden harmonies of a chaotic world. And remember, connections aren’t just about numbers; they’re about relationships. Behind every node is a creator, behind every edge, an audience.
-    </p>
-    <p>
-        <em>[Zentron steps back, the network shimmering around them.]</em>
-    </p>
-    <p>
-        <strong>Zentron:</strong> Take what you’ve learned, young one, and explore further. The YouNiverse is vast, and every connection you uncover adds another thread to its tapestry.
-    </p>
-</section>
 
 <section id="metric-design">
 <h2>The Awakening of the Researcher: A Quest for Diversity</h2>
@@ -323,33 +302,8 @@ title: "Unveiling the Secrets Behind YouTube Categories"
 <h1>2. Application on real channel data</h1>
         <img src="assets/img/Distribution_channel_density.png" alt=""Plot11">
 
-<p>Encouraged by these results, the researcher now applied the Channel Diversity Metric to a real-world dataset of YouTube channels. He sought to understand the distribution of diversity scores across channels.<\p>
-<p>From the histogram of channel frequencies and their corresponding diversity scores, he observes that several potential generative laws could explain the observed distribution. The distribution could follow one of the following forms:</p>
-
-<ol>
-<li><p><strong>Exponential Distribution</strong>: The probability density function (PDF) is given by:</p>
-
-<p>
-    <math display="block" class="tml-display" style="display:block math;"><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>|</mi><mi>λ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>λ</mi><msup><mi>e</mi><mrow><mo lspace="0em" rspace="0em">−</mo><mi>λ</mi><mi>x</mi></mrow></msup><mo separator="true">,</mo><mspace width="1em"></mspace><mi>x</mi><mo>≥</mo><mn>0</mn></mrow></math>
-</p></li>
-<li><p><strong>Truncated Normal Distribution</strong>: A normal distribution restricted to a specific range, typically used when data is confined within certain bounds. The truncated normal PDF is:</p>
-
-<p>
-    <math display="block" class="tml-display" style="display:block math;"><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>|</mi><mi>μ</mi><mo separator="true">,</mo><mi>σ</mi><mo separator="true">,</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>ϕ</mi><mrow><mo fence="true" form="prefix">(</mo><mfrac><mrow><mi>x</mi><mo>−</mo><mi>μ</mi></mrow><mi>σ</mi></mfrac><mo fence="true" form="postfix">)</mo></mrow></mrow><mrow><mi>σ</mi><mo form="prefix" stretchy="false">[</mo><mrow><mi mathvariant="normal">Φ</mi></mrow><mrow><mo fence="true" form="prefix">(</mo><mfrac><mrow><mi>b</mi><mo>−</mo><mi>μ</mi></mrow><mi>σ</mi></mfrac><mo fence="true" form="postfix">)</mo></mrow><mo>−</mo><mrow><mi mathvariant="normal">Φ</mi></mrow><mrow><mo fence="true" form="prefix">(</mo><mfrac><mrow><mi>a</mi><mo>−</mo><mi>μ</mi></mrow><mi>σ</mi></mfrac><mo fence="true" form="postfix">)</mo></mrow><mo form="postfix" stretchy="false" lspace="0em" rspace="0em">]</mo></mrow></mfrac><mo separator="true">,</mo><mspace width="1em"></mspace><mi>a</mi><mo>≤</mo><mi>x</mi><mo>≤</mo><mi>b</mi></mrow></math>
-</p>
-
-<p>where $\phi$ is the standard normal PDF and $\Phi$ is the cumulative distribution function (CDF).</p></li>
-<li><p><strong>Gamma Distribution</strong>:</p>
-
-<p>
-    <math display="block" class="tml-display" style="display:block math;"><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>|</mi><mi>α</mi><mo separator="true">,</mo><mi>β</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mrow><msup><mi>x</mi><mrow><mi>α</mi><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>e</mi><mrow><mo lspace="0em" rspace="0em">−</mo><mi>x</mi><mi>/</mi><mi>β</mi></mrow></msup></mrow><mrow><msup><mi>β</mi><mi>α</mi></msup><mrow><mi mathvariant="normal">Γ</mi></mrow><mo form="prefix" stretchy="false">(</mo><mi>α</mi><mo form="postfix" stretchy="false" lspace="0em" rspace="0em">)</mo></mrow></mfrac><mo separator="true">,</mo><mspace width="1em"></mspace><mi>x</mi><mo>≥</mo><mn>0</mn></mrow></math>
-</p></li>
-<li><p><strong>Beta Distribution</strong>:</p>
-
-<p>
-    <math display="block" class="tml-display" style="display:block math;"><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mi>|</mi><mi>α</mi><mo separator="true">,</mo><mi>β</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mrow><msup><mi>x</mi><mrow><mi>α</mi><mo>−</mo><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>x</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>β</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><mrow><mi>B</mi><mo form="prefix" stretchy="false">(</mo><mi>α</mi><mo separator="true">,</mo><mi>β</mi><mo form="postfix" stretchy="false" lspace="0em" rspace="0em">)</mo></mrow></mfrac><mo separator="true">,</mo><mspace width="1em"></mspace><mn>0</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>1</mn></mrow></math>
-</p></li>
-</ol>
+<p>Encouraged by these results, the researcher now applied the Channel Diversity Metric to a real-world dataset of YouTube channels. He sought to understand the distribution of diversity scores across channels.
+<p>From the histogram of channel frequencies and their corresponding diversity scores, he observes that several potential generative laws could explain the observed distribution (Exponential, Truncated Gaussian, Gamma and Beta distributions)</p>
 
 <p>To determine which of these distributions is most plausible for his diversity score data, he proceeds by analyzing their goodness of fit. The first step in this process is to visualize the data against the theoretical distribution using a <strong>Quantile-Quantile (QQ) plot</strong>: A QQ plot compares the quantiles of the empirical data against the quantiles of a given theoretical distribution. If the data follows the proposed distribution, the points in the QQ plot will lie approximately on a straight line.</p>
         <img src="assets/img/4 graph.png" alt=""Plot12">
@@ -357,7 +311,7 @@ title: "Unveiling the Secrets Behind YouTube Categories"
 
 <p>To further substantiate his findings, the researcher computed the log-likelihood and mean squared error (MSE) for each distribution.</p>
         <img src="assets/img/comparaison_of_distribution_fit.png" alt=""Plot13">
-<p>With these statistical measures, the researcher was confident that the Beta distribution best explained the distribution of channel diversity scores.<\p>
+<p>With these statistical measures, the researcher was confident that the Beta distribution best explained the distribution of channel diversity scores.
 
 <p>He then concludes that YouTube channel diversity scores following a Beta distribution implies that most channels tend to focus on a narrow set of categories, resulting in low diversity scores. This indicates that many creators prefer specialized content strategies, sticking to a limited range of topics. The flexibility of the Beta distribution also suggests that while some channels embrace broader content diversity, the majority operate within a more restrictive set of categories, reflecting strategic choices for niche targeting or audience consistency.</p>
 
@@ -446,7 +400,6 @@ title: "Unveiling the Secrets Behind YouTube Categories"
 <li><p>Targeted Content Strategy: Channels that operate within this domain may be focusing on a <strong>broad but still manageable range of topics</strong>. They are not too specialized to limit their audience, nor are they too generalized to lose focus. This balance may help attract a more consistent and engaged subscriber base.</p></li>
 <li><p>Audience Engagement: Channels that span a moderate number of categories can cater to a variety of viewer interests, leading to increased engagement. At the same time, they avoid spreading themselves too thin across unrelated topics, which could dilute the channel's identity and cause audience fragmentation.</p></li>
 <li><p>Content Differentiation: By staying within the moderate diversity range, these channels are likely to stand out in niche areas without competing with the most generalized or overly specific content. This positioning could lead to higher discoverability and a greater likelihood of attracting subscribers who are interested in a curated but diverse set of topics.</p></li>
-<li><p>Statistical Support: The significant differences in subscription counts observed within this moderate diversity range, as confirmed by statistical tests, suggest that the choice of content breadth within this domain positively influences channel growth. This is likely due to the fact that it aligns with a larger, more engaged audience while still maintaining a distinct channel identity.</p></li>
 </ul>
 </section>
 
@@ -480,11 +433,11 @@ title: "Unveiling the Secrets Behind YouTube Categories"
     In contrast, the Light Side (“Education & How-to”) cluster show a much steadier trajectory. Instead of sharp spikes, their growth is more gradual and sustained, with fewer extreme swings in viewership. This likely reflects the evergreen nature of educational content. Tutorials, lessons, and guides often remain useful long after they’re published, drawing in viewers consistently over time. The longer shelf life of this content means it can attract audiences months or even years later, contributing to its steady growth.
 
     <p>
-      So, while entertainment channels may experience intense but fleeting engagement, education-oriented channels tend to build a slower, more enduring connection with their audience. These patterns highlight the distinct ways creators across different categories grow their channels, shaped by the unique characteristics of their content.
+      So, while entertainment channels may experience intense but fleeting engagement, education-oriented channels tend to build a slower, more enduring connection with their audience. 
     </p>
 
     <p>
-      After looking at how viewership evolves in the early stages of a channel’s life, the next question arises: what about subscriber growth? Do the same patterns hold, or does subscriber behavior differ between entertainment and education-focused channels? To explore this, the researcher turns to short-term subscription growth within the first year of a channel’s activity. By comparing the two clusters : the Dark Side ("Gaming & Music") and the Light Side (“Education & How-to”). The goal is to uncover whether spikes, steady trends, or cyclical behaviors dominate in each. Let’s take a closer look at how these clusters stack up.
+      After looking at how viewership evolves in the early stages of a channel’s life, the next question arises: what about subscriber growth? Do the same patterns hold, or does subscriber behavior differ between entertainment and education-focused channels? 
     </p>
 
     <img src="assets/img/growth-short-term.png" alt="Plot 16">
@@ -506,7 +459,7 @@ title: "Unveiling the Secrets Behind YouTube Categories"
     </p>
 
     <p>
-      These contrasting patterns reveal two very different dynamics: the burst-and-fade growth of the Dark Side entertainment channels versus the steady, value-driven growth of Light Side educational channels. Each approach showcases the unique ways these categories engage with their audiences.
+      
     </p>
 
 <p>
