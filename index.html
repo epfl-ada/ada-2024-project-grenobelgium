@@ -362,32 +362,30 @@ title: "Unveiling the Secrets Behind YouTube Categories"
 
 <h2>3. Inspecting optimal diversity domains</h2>
 
-<p>In order to explore the relationship between channel diversity and success, we aim to divide the diversity domain into three distinct categories: <strong>low, moderate, and high diversity</strong>. This approach will help us identify whether certain levels of content diversity are correlated with greater <strong>channel success</strong>. To ensure that our findings are <strong>not overly reliant on specific data subsets</strong> and can be generalized across different types of channels, we will use the theoretical quantiles of the Beta distribution to define these categories. By leveraging these quantiles, we can create <strong>well-balanced groups</strong> based on the natural spread of the diversity scores, ensuring statistical rigor and minimizing any bias that might arise from arbitrary cutoffs.</p>
-
-<p>Furthermore, by constructing balanced domains, we can ensure that each category has an adequate representation of channels, which will allow us to draw meaningful, statistically significant conclusions about how diversity levels affect channel success. This method helps avoid overfitting to specific trends in the data, leading to more robust, generalizable insights.</p>
+<p>After defining the Channel Diversity Metric, the EPFL researcher wanted to explore how different levels of diversity affected channel success. His goal was to categorize channels into three distinct groups: low, moderate, and high diversity, and determine if these categories correlated with higher subscriber counts.</p>
 
 <p><strong>i. Example</strong></p>
 
-<p>We begin by dividing the diversity domain into three categories using q1=0.1 and q2=0.6, ensuring a balanced distribution across categories. Next, we will examine whether these diversity categories have an impact on subscriber count.</p>
+<p>He begins by dividing the diversity domain into three categories using q1=0.1 and q2=0.6, ensuring a balanced distribution across categories. Next, he will examine whether these diversity categories have an impact on subscriber count.</p>
         <img src="assets/img/comparison_of_suscribers.png" alt=""Plot13">
-<p>From the initial plot, it appears that there is a significant difference in the number of subscribers across the three diversity categories. However, as emphasized earlier, <strong>visual inspection alone is not sufficient to draw reliable conclusions</strong>. To rigorously support our claim, we will apply non-parametric statistical tests to assess whether the observed differences are statistically significant.</p>
+<p>The initial analysis revealed a notable difference in subscriber counts, but visual inspection alone wasn’t enough.</p>
 
-<p>To test for differences between the three diversity categories, we will use the <strong>Kruskal-Wallis test</strong>. This test is appropriate because it does not assume a normal distribution of the data and can compare more than two groups. The null hypothesis for this test is that all groups have the same distribution, while the alternative hypothesis is that at least one group differs significantly from the others.</p>
+<p>To confirm the findings, the researcher applied the Kruskal-Wallis test, a non-parametric test that doesn’t assume a normal distribution. The null hypothesis here was that all three diversity groups had the same distribution of subscribers.</p>
 
-<p>We will proceed with pairwise comparisons using the <strong>Mann-Whitney U test</strong>. This test will allow us to compare each pair of diversity categories to identify which specific groups differ from each other. The Mann-Whitney U test is a non-parametric test that compares the ranks of two independent groups, with the null hypothesis being that the two groups come from the same distribution.</p>
+<p>Next, he conducted pairwise comparisons using the Mann-Whitney U test, which compares ranks between two groups. This would allow him to identify which specific diversity groups differed significantly from one another.</p>
 
 <p><strong>ii. Identifying the Optimal Diversity Region</strong></p>
 
-<p>Now that we have established statistical significance regarding the differences in subscription distributions across the three diversity categories, we aim to identify the optimal diversity region for channel success. To do this, we will perform a grid search across different quantile values for q1 and q2, which define the boundaries of the diversity categories.</p>
+<p>After confirming that the differences in subscriber counts across the diversity categories were statistically significant, the researcher proceeded to identify the optimal diversity region for channel success.</p>
 
 <p>The grid search will be constrained by the requirement to maintain fairly balanced categories. Specifically:</p>
 
 <ul>
-<li>When q1 = 0 or q2 = 1, we will limit the search to two categories, ensuring they are balanced (dividing the diversity domain into a low and high diversity category).</li>
-<li>Otherwise, for intermediate values of q1 and q2, we will examine three balanced categories, each representing a distinct diversity level (low, moderate, and high).</li>
+<li>When q1 = 0 or q2 = 1, the diversity domain would be split into just two categories (low and high).</li>
+<li>For intermediate values of q1 and q2, the researcher would maintain three balanced categories representing low, moderate, and high diversity.</li>
 </ul>
         <img src="assets/img/grid search.png" alt=""Plot14">
-<p>From our analysis, it appears that the optimal domain for maximizing subscription counts lies within the moderate diversity category, defined by the quantile values 𝑞1=0.05 and 𝑞2=0.6. This domain seems to strike a balance between channels that focus too narrowly on a small set of categories (low diversity) and those that attempt to cover too many topics (high diversity).</p>
+<p>From this analysis, it appears that the optimal domain for maximizing subscription counts lies within the moderate diversity category, defined by the quantile values 𝑞1=0.05 and 𝑞2=0.6. This domain seems to strike a balance between channels that focus too narrowly on a small set of categories (low diversity) and those that attempt to cover too many topics (high diversity).</p>
 
 <p>Channels within this moderate diversity range likely benefit from a combination of the following factors:</p>
 
