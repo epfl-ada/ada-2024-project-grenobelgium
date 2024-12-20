@@ -548,3 +548,94 @@ category_colors = {
     'Autos & Vehicles': '#9E7C4D',      # Earthy Tan
     'Pets & Animals': '#F7B6D2'         # Soft Light Pink
 }
+
+
+#****************************************************************************************************************
+def plot_average_per_week(df, metric='views'):
+    """
+    Plots the average growth rate of a specified metric (views or subscribers) per week for each cluster.
+
+    Parameters:
+    - df: pandas DataFrame containing time series data and cluster labels.
+    - metric: str, the metric to visualize ('views' or 'subs'). Default is 'views'.
+
+    The function reshapes the input data to calculate average weekly growth rates for the chosen metric
+    (e.g., views or subscribers) across different clusters and plots the results as a line graph.
+    """
+    # Determine the prefix ('view' for views or 'sub' for subscribers) based on the chosen metric
+    prefix = 'view' if metric == 'views' else 'sub'
+    # Generate column names for the metric (e.g., view1, view2, ..., view52 or sub1, sub2, ..., sub52)
+    metric_columns = [f"{prefix}{i}" for i in range(1, 53)]
+    
+    # Select only the cluster column and the metric columns from the DataFrame
+    df_metric = df[['cluster'] + metric_columns]
+
+    # Transform the data into a long format with columns: cluster, week, and value
+    df_long = df_metric.melt(id_vars='cluster', 
+                             value_vars=metric_columns, 
+                             var_name='week', 
+                             value_name='value')
+
+    # Extract the week number from the column name and convert it to an integer
+    df_long['week'] = df_long['week'].str.replace(prefix, '').astype(int)
+    
+    # Calculate the average value of the metric per week for each cluster
+    df_avg = df_long.groupby(['cluster', 'week'])['value'].mean().reset_index()
+
+    # Set the style for the plot
+    sns.set(style="whitegrid")
+    plt.figure(figsize=(7, 4))
+    # Create a line plot showing the average metric per week for each cluster
+    sns.lineplot(data=df_avg, x='week', y='value', hue='cluster', marker='o')
+
+    # Add plot title and axis labels
+    plt.title(f'Average {metric.capitalize()} Growth Rate per Week by Cluster', fontsize=10)
+    plt.xlabel('Week', fontsize=14)
+    plt.ylabel(f'Average {metric.capitalize()} Growth Rate', fontsize=10)
+    # Customize legend appearance
+    plt.legend(title='Cluster', fontsize=9, title_fontsize=10)
+    # Adjust layout to fit all elements properly
+    plt.tight_layout()
+    # Display the plot
+    plt.show()
+
+#****************************************************************************************************************
+
+def plot_cluster_distribution(y, mode="train"):
+    """
+    Plots the distribution of clusters (entertainment vs educational) as a bar chart.
+    The percentage distribution is calculated for the given labels.
+
+    Parameters:
+    - y: pandas Series containing the target labels (0 for 'Entertainment', 1 for 'Educational').
+    - mode: str, determines if the plot is for training or testing data ('train' or 'test').
+
+    Returns:
+    - A bar plot showing the percentage distribution of the clusters.
+    """
+    # Convert numerical labels to categorical labels ('Entertainment' or 'Educational')
+    y = y.apply(lambda x: 'Entertainment' if x == 0 else 'Educational')
+
+    # Calculate the percentage distribution of each class
+    class_counts = y.value_counts(normalize=True) * 100
+
+    # Create a bar plot to visualize the distribution
+    plt.figure(figsize=(4, 3))
+    class_counts.plot(kind='bar')
+
+    # Set the plot title based on the mode (training or testing)
+    if mode == "train":
+        plt.title('Training Cluster Distribution (%)')
+    else:
+        plt.title('Testing Cluster Distribution (%)')
+
+    # Label the axes and set the tick marks
+    plt.xlabel('Cluster')
+    plt.ylabel('Percentage')
+    plt.xticks(rotation=0)
+
+    # Add a grid for better readability of the bar heights
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+    # Display the plot
+    plt.show()

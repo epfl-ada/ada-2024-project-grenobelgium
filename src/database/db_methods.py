@@ -157,3 +157,22 @@ def retrieve_timeseries_data_by_cluster(collection, categories):
     print("Converted strings to datetime objects")
     
     return data
+
+
+# Method that retrives data from a time series collection
+def retrieve_time_series(collection):
+    """
+    This function loads the time series dataset from a MongoDB collection.
+    """
+    print("Connecting to MongoDB and loading data")
+    
+    # Load data from the MongoDB collection
+    cursor = collection.find({})
+    channels_weekly_time_series = pd.DataFrame(list(cursor))
+    
+    print("Data successfully loaded.")
+    
+    # Ensure datetime is properly parsed
+    channels_weekly_time_series['datetime'] = pd.to_datetime(channels_weekly_time_series['datetime'])
+    
+    return channels_weekly_time_series
